@@ -2,7 +2,7 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import { Modal } from './components/Modal.tsx';
+import { Modal } from './components/modal/Modal.tsx';
 
 export const App = () => {
     const [authActive, setAuthActive] = useState(false);
