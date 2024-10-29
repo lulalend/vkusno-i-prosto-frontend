@@ -28,11 +28,14 @@ export default tseslint.config(
 
             semi: ['error', 'always'],
             quotes: ['error', 'single'],
-            indent: ['error', 4],
+            indent: ['error', 2],
+            'max-len': ['error', { 'code': 80 }],
             'object-curly-spacing': ['error', 'always'],
             'prefer-const': 'error',
             'no-var': 'error',
             'no-console': 'warn',
+            'arrow-body-style': ['error', 'as-needed', { 'requireReturnForObjectLiteral': true }],
+            
             'padding-line-between-statements': [
                 'error',
                 { blankLine: 'always', prev: '*', next: 'return' },

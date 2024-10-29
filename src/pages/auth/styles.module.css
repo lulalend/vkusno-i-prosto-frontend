@@ -1,0 +1,127 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 550px;
+    width: 400px;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 20px;
+    box-shadow: 5px 20px 50px #0000009B;
+    background: #FFDD2E;
+    background: radial-gradient(at center bottom, #FFDD2E, #fbc721);
+}
+
+h2 {
+    color: #fff;
+    font-size: 1.7em;
+    text-align: center;
+}
+
+.submitBtn {
+    background-color: #00000066;
+    color: #FFFFFFF2;
+    border-radius: 15px;
+    margin: 15px auto;
+    padding: 15px 0;
+    width: 80%;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+}
+
+.submitBtn:hover {
+    background-color: #000000A0;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.slideUp h2 {
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.slideUp .submitBtn, .slideUp .inputs {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.signUp, .signIn {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.signUp {
+    top: 45%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    width: 65%;
+    z-index: 5;
+    color: #FFFFFF;
+}
+
+.signUp.slideUp {
+    top: 5%;
+    -webkit-transform: translate(-50%, 0%);
+}
+
+.signIn {
+    top: 20%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+
+    background-color: #fff;
+    opacity: 1;
+}
+
+.signIn:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -20px;
+    -webkit-transform: translate(-50%, 0);
+    background-color: #fff;
+    width: 200%;
+    height: 250px;
+    border-radius: 50%;
+    z-index: 4;
+}
+
+.signIn.slideUp {
+    top: 90%;
+}
+
+.signIn .center {
+    position: absolute;
+    top: calc(40% - 10%);
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    width: 65%;
+    z-index: 5;
+}
+
+.signIn.slideUp .center {
+    top: 1%;
+    -webkit-transform: translate(-50%, -17%);
+}
+
+.signIn .center h2 {
+    padding-top: 1.5em;
+    color: #000000;
+    text-align: center;
+}
+
