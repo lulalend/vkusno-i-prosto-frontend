@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
 
-    background: #000000A4;
+    background: var(--modal-background);
     opacity: 0;
     pointer-events: none;
 }
@@ -22,7 +22,6 @@
 
 .modalContent {
     transform: scale(0.5);
-
 }
 
 .modalContent.active {

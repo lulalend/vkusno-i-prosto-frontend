@@ -1,20 +1,25 @@
 :root {
-    --transition: all 0.2s ease-in-out;
+    --transition: all 0.3s ease-in-out;
 
-    --color-primary: #F9F7F2;
+    --color-primary: #faf8f2;
     --color-secondary: #FFDD2E;
     --color-secondary-dark: #FBC721;
-    --light-gray: #EFEEEE;
-    --modal-background: #00000060;
-    --dark-blue: #303960;
+    --modal-background: #000000A4;
     --white: #FFFFFF;
-    --dark-shadow: #BABECC;
+    --white-opacity-50: #FFFFFF80;
+    --dark-shadow: #80808060;
     --text: #61677C;
 
     --secondary-gradient: radial-gradient(at center bottom, var(--color-secondary), var(--color-secondary-dark));
-    --shadow: 5px 5px 20px var(--dark-shadow), -5px -5px 20px var(--white);
-    --hover-shadow: 2px 2px 5px  var(--dark-shadow), -2px -2px 5px var(--white);
+
+    --shadow: 0 3px 10px var(--dark-shadow), -2px -4px 5px var(--white) inset;
+    --hover-shadow: 2px 2px 5px var(--dark-shadow), -2px -2px 5px var(--white);
     --inner-shadow: inset 2px 2px 5px var(--dark-shadow), inset -5px -5px 10px var(--white);
     --focus-shadow: inset 1px 1px 2px var(--dark-shadow), inset -1px -1px 2px var(--white);
     --text-shadow: 1px 1px 0 var(--white);
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }

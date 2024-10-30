@@ -36,10 +36,15 @@ h2 {
     margin-top: 1rem;
 
     background-color: var(--color-primary);
+    transition: var(--transition);
     border-radius: 15px;
     box-shadow: var(--inner-shadow);
 
     overflow: hidden;
+}
+
+.inputs:focus-within {
+    box-shadow: var(--focus-shadow);
 }
 
 .inputs input, .submitBtn {
@@ -68,7 +73,7 @@ h2 {
     
     border-radius: 15px;
     color: #FFFFFFF2;
-    margin: 3em auto 0;
+    margin: 60px auto 0;
     font-size: 0.9em;
     font-weight: bold;
     cursor: pointer;
@@ -134,13 +139,13 @@ h2 {
 }
 
 .signIn.slideUp {
-    top: 92%;
+    top: 90%;
     -webkit-transition: all 0.5s ease;
 }
 
 .signIn .center {
     position: absolute;
-    top: calc(40% - 10%);
+    top: 40%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     width: 65%;
@@ -149,12 +154,11 @@ h2 {
 }
 
 .signIn.slideUp .center {
-    top: 25%;
-    -webkit-transform: translate(-50%, -17%);
+    -webkit-transform: translate(-50%, -9%);
 }
 
 .signIn .center h2 {
-    padding-top: 1.5em;
+    margin-bottom: 1.75em;
     color: #000000;
     text-align: center;
 }
