@@ -11,32 +11,21 @@
 
     border-radius: 20px;
     box-shadow: 5px 20px 50px #0000009B;
-    background: #FFDD2E;
-    background: radial-gradient(at center bottom, #FFDD2E, #fbc721);
+    background: var(--secondary-gradient);
+    -webkit-transition: all 0.5s ease;
 }
 
 h2 {
-    color: #fff;
+    color: var(--white);
     font-size: 1.7em;
     text-align: center;
+
+    -webkit-transition: all 0.5s ease;
 }
 
-.submitBtn {
-    background-color: #00000066;
-    color: #FFFFFFF2;
-    border-radius: 15px;
-    margin: 15px auto;
-    padding: 15px 0;
-    width: 80%;
-    font-size: 0.9em;
-    font-weight: bold;
+.slideUp h2 {
+    font-size: 1em;
     cursor: pointer;
-    opacity: 1;
-    visibility: visible;
-}
-
-.submitBtn:hover {
-    background-color: #000000A0;
 }
 
 .inputs {
@@ -44,11 +33,51 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 1rem;
+
+    background-color: var(--color-primary);
+    border-radius: 15px;
+    box-shadow: var(--inner-shadow);
+
+    overflow: hidden;
 }
 
-.slideUp h2 {
-    font-size: 1em;
+.inputs input, .submitBtn {
+    border: 0;
+    outline: 0;
+}
+
+.inputs input {
+    padding: 12px 0;
+    line-height: 30px;
+    border-bottom: 1px solid var(--light-gray);
+    width: 100%;
+
+    font-size: 14px;
+    text-shadow: var(--text-shadow);
+    text-align: center;
+    background: transparent;
+
+    transition: var(--transition);
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 20px;
+    background-color: #00000066;
+    
+    border-radius: 15px;
+    color: #FFFFFFF2;
+    margin: 3em auto 0;
+    font-size: 0.9em;
+    font-weight: bold;
     cursor: pointer;
+    visibility: visible;
+    -webkit-transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+    background-color: #000000A0;
 }
 
 .slideUp .submitBtn, .slideUp .inputs {
@@ -61,20 +90,23 @@ h2 {
 
     display: flex;
     flex-direction: column;
+    -webkit-transition: all 0.5s ease;
 }
 
 .signUp {
-    top: 45%;
+    top: 43%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     width: 65%;
     z-index: 5;
+
     color: #FFFFFF;
 }
 
 .signUp.slideUp {
     top: 5%;
     -webkit-transform: translate(-50%, 0%);
+    -webkit-transition: all 0.5s ease;
 }
 
 .signIn {
@@ -84,7 +116,7 @@ h2 {
     bottom: 0;
     z-index: 5;
 
-    background-color: #fff;
+    background-color: var(--color-primary);
     opacity: 1;
 }
 
@@ -94,7 +126,7 @@ h2 {
     left: 50%;
     top: -20px;
     -webkit-transform: translate(-50%, 0);
-    background-color: #fff;
+    background-color: var(--color-primary);
     width: 200%;
     height: 250px;
     border-radius: 50%;
@@ -102,7 +134,8 @@ h2 {
 }
 
 .signIn.slideUp {
-    top: 90%;
+    top: 92%;
+    -webkit-transition: all 0.5s ease;
 }
 
 .signIn .center {
@@ -112,10 +145,11 @@ h2 {
     -webkit-transform: translate(-50%, -50%);
     width: 65%;
     z-index: 5;
+    -webkit-transition: all 0.3s ease;
 }
 
 .signIn.slideUp .center {
-    top: 1%;
+    top: 25%;
     -webkit-transform: translate(-50%, -17%);
 }
 

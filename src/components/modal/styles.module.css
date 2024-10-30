@@ -22,6 +22,7 @@
 
 .modalContent {
     transform: scale(0.5);
+
 }
 
 .modalContent.active {
