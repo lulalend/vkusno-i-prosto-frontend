@@ -1,25 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600,700,800");
+
 :root {
     --transition: all 0.3s ease-in-out;
 
-    --color-primary: #faf8f2;
-    --color-secondary: #FFDD2E;
-    --color-secondary-dark: #FBC721;
+    /*--color-primary: #FFFDF3;*/
+    --color-primary: #F9F7F2;
+    --color-primary-dark: #fdfcfa;
+    --color-secondary: #FFDD2D;
+    /*--color-secondary-dark: #FBC721;*/
+    --color-secondary-dark: #FAB619;
     --modal-background: #000000A4;
     --white: #FFFFFF;
-    --white-opacity-50: #FFFFFF80;
+    --white-opacity-25: #FFFFFF40;
     --dark-shadow: #80808060;
-    --text: #61677C;
 
     --secondary-gradient: radial-gradient(at center bottom, var(--color-secondary), var(--color-secondary-dark));
 
-    --shadow: 0 3px 10px var(--dark-shadow), -2px -4px 5px var(--white) inset;
+    --shadow: 0 2px 5px var(--dark-shadow), -2px -2px 5px var(--white) inset;
     --hover-shadow: 2px 2px 5px var(--dark-shadow), -2px -2px 5px var(--white);
-    --inner-shadow: inset 2px 2px 5px var(--dark-shadow), inset -5px -5px 10px var(--white);
+    --inner-shadow: inset 2px 2px 5px var(--dark-shadow), inset -5px -5px 10px var(--white-opacity-25);
     --focus-shadow: inset 1px 1px 2px var(--dark-shadow), inset -1px -1px 2px var(--white);
+
+    /*Text*/
+    --text-color: #16161D;
+    --font-family: "Fira Sans", Helvetica, Arial, sans-serif;
     --text-shadow: 1px 1px 0 var(--white);
 }
 
 * {
     margin: 0;
     padding: 0;
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-color);
 }
