@@ -1,0 +1,45 @@
+image: node:latest
+
+stages:
+  - install
+  - build
+  - quality
+
+install:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+build:
+  stage: build
+  script:
+    - npm run build
+  dependencies:
+    - install
+  artifacts:
+    paths:
+      - dist/
+
+prettier:
+  stage: quality
+  script:
+    - npm run prettier:check # Запуск Prettier для проверки форматирования
+  dependencies:
+    - install
+
+eslint:
+  stage: quality
+  script:
+    - npm run lint:check # Запуск ESLint для анализа кода
+  dependencies:
+    - install
+
+types:
+  stage: quality
+  script:
+    - npm run types:check # Запуск проверки типов TypeScript
+  dependencies:
+    - install
