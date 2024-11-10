@@ -14,7 +14,7 @@ export const Modal = ({ isActive, onClose, children }: Props) => (
     onClick={() => onClose()}
   >
     <div
-      className={classNames(styles.modalContent, {[styles.active]: isActive})}
+      className={classNames(styles.modalContent, { [styles.active]: isActive })}
       onClick={(e) => e.stopPropagation()}
     >
       {children}
