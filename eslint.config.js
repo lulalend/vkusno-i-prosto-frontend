@@ -19,7 +19,7 @@ export default tseslint.config(
       'node_modules',
       'build',
       'dist',
-      'public/mockServiceWorker.js'
+      'public/mockServiceWorker.js',
     ],
     plugins: {
       'react-hooks': reactHooks,
