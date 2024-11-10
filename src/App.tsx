@@ -8,7 +8,7 @@ export const App = () => (
     <Header />
     <Routes>
       <Route path="/" element={<MainPage />} />
-      <Route path="*" element={<NoMatch />}/>
+      <Route path="*" element={<NoMatch />} />
     </Routes>
   </BrowserRouter>
 );
