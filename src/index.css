@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600,700,800");
+
+:root {
+    --transition: all 0.3s ease-in-out;
+
+    /*--color-primary: #FFFDF3;*/
+    --color-primary: #F9F7F2;
+    --color-primary-light: #FDFCFA;
+    --color-secondary: #FFDD2D;
+    /*--color-secondary-dark: #FBC721;*/
+    --color-secondary-dark: #FAB619;
+    --modal-background: #000000A4;
+    --white: #FFFFFF;
+    --white-opacity-50: #FFFFFF80;
+    --gray-opacity-40: #80808060;
+    --light-gray: #EEEEEE;
+    --black: #16161D;
+
+    --secondary-gradient: radial-gradient(at center bottom, var(--color-secondary), var(--color-secondary-dark));
+
+    --shadow: 0 2px 5px var(--gray-opacity-40), -2px -2px 5px var(--white) inset;
+    --hover-shadow: 2px 2px 5px var(--gray-opacity-40), -2px -2px 5px var(--white);
+    --inner-shadow: inset 2px 2px 5px var(--gray-opacity-40), inset -5px -5px 10px var(--white-opacity-50);
+    --focus-shadow: inset 1px 1px 2px var(--gray-opacity-40), inset -1px -1px 2px var(--white);
+
+    /*Text*/
+    --font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+    --text-shadow: 1px 1px 0 var(--white);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--black);
+}
