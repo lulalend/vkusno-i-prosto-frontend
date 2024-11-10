@@ -9,7 +9,11 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prettier:check": "prettier --check .",
-    "prettier:fix": "prettier --ignore-unknown --write ."
+    "prettier:fix": "prettier --ignore-unknown --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "types:check": "tsc --noEmit",
+    "clean": "rimraf node_modules dist"
   },
   "dependencies": {
     "react": "^18.3.1",
