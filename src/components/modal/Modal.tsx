@@ -1,19 +1,20 @@
 import { ReactNode } from 'react';
+import classNames from 'classnames';
 import styles from './styles.module.css';
 
 type Props = {
   isActive: boolean;
-  setIsActive: (value: boolean) => void;
+  onClose: () => void;
   children: ReactNode;
 };
 
-export const Modal = ({ isActive, setIsActive, children }: Props) => (
+export const Modal = ({ isActive, onClose, children }: Props) => (
   <div
-    className={`${styles.container} ${isActive ? styles.active : ''}`}
-    onClick={() => setIsActive(false)}
+    className={classNames(styles.container, { [styles.active]: isActive })}
+    onClick={() => onClose()}
   >
     <div
-      className={`${styles.modalContent} ${isActive ? styles.active : ''}`}
+      className={classNames(styles.modalContent, {[styles.active]: isActive})}
       onClick={(e) => e.stopPropagation()}
     >
       {children}
