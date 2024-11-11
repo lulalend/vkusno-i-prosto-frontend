@@ -35,7 +35,7 @@ export default tseslint.config(
 
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
-      indent: ['error', 2, { 'SwitchCase': 1 }],
+      indent: ['error', 2, { SwitchCase: 1 }],
       'max-len': ['error', { code: 80 }],
       'object-curly-spacing': ['error', 'always'],
       'prefer-const': 'error',
