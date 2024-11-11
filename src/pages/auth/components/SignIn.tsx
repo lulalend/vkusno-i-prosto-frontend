@@ -8,7 +8,7 @@ export const SignIn = () => {
   const { mutate: signIn } = useSignIn();
 
   const handleSignIn = () => {
-    signIn({login, password});
+    signIn({ login, password });
 
     setLogin('');
     setPassword('');
@@ -32,7 +32,9 @@ export const SignIn = () => {
           required
         />
       </div>
-      <button className={styles.submitBtn} onClick={handleSignIn}>Войти</button>
+      <button className={styles.submitBtn} onClick={handleSignIn}>
+        Войти
+      </button>
     </>
   );
 };
