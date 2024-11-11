@@ -9,9 +9,6 @@ export const useSignUp = () => {
   const { mutate, isPending } = useMutation({
     mutationKey: ['sign up'],
     mutationFn: (data: SignUpRequest) => signUp(data),
-    onSuccess: () => {
-      //   выполнить SignIn запрос
-    },
     onError: (error: AxiosError) => {
       const statusCode = error.status;
 
