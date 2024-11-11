@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import type { Recipe } from '../../types/types.ts';
 
 const URL: string = 'http://localhost:8000/recipes';

@@ -1,6 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import { AxiosError } from 'axios';
 import { createRecipe } from './recipesApi.ts';
 import { Recipe } from '../../types/types.ts';
+import { getErrorMessage } from '../../constants/responsesMessages.ts';
 
 export const useCreateRecipe = () => {
   const queryClient = useQueryClient();
@@ -9,11 +12,15 @@ export const useCreateRecipe = () => {
     mutationKey: ['create recipe'],
     mutationFn: (recipe: Recipe) => createRecipe(recipe),
     onSuccess: () => {
+      toast.success('Спасибо за рецепт :)');
       queryClient.invalidateQueries({ queryKey: ['recipes'] });
     },
-    // TODO: заменить обработку ошибки
-    onError: (error) => {
-      console.log(error);
+    onError: (error: AxiosError) => {
+      const statusCode = error.status;
+
+      if (statusCode) {
+        toast.error(getErrorMessage(statusCode));
+      }
     },
   });
 
