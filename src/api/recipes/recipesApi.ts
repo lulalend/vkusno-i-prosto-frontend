@@ -13,5 +13,5 @@ export const getAllRecipes = () => axios.get<Recipe[]>(URL);
 
 export const getRecipeById = (id: string) => axios.get<Recipe>(`${URL}/${id}`);
 
-// возможно тут в аргументе типа пригодиться Omit
+// возможно тут в аргументе типа пригодится Omit
 export const createRecipe = (recipe: Recipe) => axios.post(URL, recipe, config);

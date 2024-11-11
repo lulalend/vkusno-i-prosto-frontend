@@ -12,7 +12,7 @@ type Props = {
 
 export const useRecipeById = ({ id }: Props) => {
   const { data, isLoading, isSuccess, error } = useQuery<Recipe, AxiosError>({
-    queryKey: ['recipe', id],
+    queryKey: ['recipe', { id }],
     queryFn: () => getRecipeById(id).then((response) => response.data),
     enabled: !!id,
   });
