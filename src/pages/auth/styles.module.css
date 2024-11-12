@@ -83,15 +83,16 @@ h2 {
   border-radius: 15px;
   color: #fffffff2;
   margin: 60px auto 0;
-  font-size: 0.9em;
-  font-weight: bold;
+  font-size: 1.1em;
+  font-weight: 500;
+
   cursor: pointer;
   visibility: visible;
   -webkit-transition: all 0.3s ease;
 }
 
 .submitBtn:hover {
-  background-color: #000000;
+  background-color: #000000A0;
 }
 
 .slideUp .submitBtn,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { Recipe } from '../../types/types.ts';
 
-const URL: string = 'http://localhost:8000/recipes';
+const URL: string = 'http://147.45.165.69:8080/v1/recipes';
 const config = {
   headers: {
     Authorization: `Bearer ${localStorage.getItem('token')}`,
