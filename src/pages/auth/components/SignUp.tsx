@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import styles from '../styles.module.css';
 import { useSignUp } from '../../../api/user/useSignUp.ts';
 import { useSignIn } from '../../../api/user/useSignIn.ts';
+import { getInfoMessage } from '../../../constants/userMessages.ts';
 
-export const SignUp = () => {
+type Props = {
+  onClose: () => void;
+};
+
+export const SignUp = ({ onClose }: Props) => {
   const [login, setLogin] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -11,17 +17,28 @@ export const SignUp = () => {
   const { mutate: signIn } = useSignIn();
 
   const handleSignUp = () => {
-    const data = {
-      login,
-      username,
-      password,
-    };
+    if (login !== '' && username !== '' && password !== '') {
+      const data = {
+        login,
+        username,
+        password,
+      };
 
-    signUp(data, {
-      onSuccess: () => {
-        signIn({ login, password });
-      },
-    });
+      signUp(data, {
+        onSuccess: () => {
+          signIn(
+            { login, password },
+            {
+              onSuccess: () => {
+                onClose();
+              },
+            },
+          );
+        },
+      });
+    } else {
+      toast.error(getInfoMessage('allFieldsMustBeFilled'));
+    }
   };
 
   return (

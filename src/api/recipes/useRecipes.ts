@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 import { getAllRecipes } from './recipesApi.ts';
 import { Recipe } from '../../types/types.ts';
-import { getErrorMessage } from '../../constants/responsesMessages.ts';
+import { getErrorMessage } from '../../constants/userMessages.ts';
 
 export const useRecipes = () => {
   const { data, isLoading, isSuccess, error } = useQuery<Recipe[], AxiosError>({

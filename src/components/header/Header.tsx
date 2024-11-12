@@ -19,7 +19,7 @@ export const Header = () => {
 
       {isAuthActive && (
         <Modal isActive={isAuthActive} onClose={() => setIsAuthActive(false)}>
-          <AuthPage />
+          <AuthPage onClose={() => setIsAuthActive(false)} />
         </Modal>
       )}
     </div>

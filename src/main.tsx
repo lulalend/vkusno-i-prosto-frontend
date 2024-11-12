@@ -12,7 +12,12 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
-      <Toaster position="top-right" reverseOrder={true} />
+      <div style={{ fontSize: '20px' }}>
+        <Toaster
+          position="top-right"
+          reverseOrder={true}
+        />
+      </div>
       <ReactQueryDevtools />
     </QueryClientProvider>
   </StrictMode>,

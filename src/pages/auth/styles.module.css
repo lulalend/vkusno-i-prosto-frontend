@@ -85,6 +85,7 @@ h2 {
   margin: 60px auto 0;
   font-size: 1.1em;
   font-weight: 500;
+  letter-spacing: 0.07em;
 
   cursor: pointer;
   visibility: visible;
@@ -92,7 +93,7 @@ h2 {
 }
 
 .submitBtn:hover {
-  background-color: #000000A0;
+  background-color: #000000a0;
 }
 
 .slideUp .submitBtn,
