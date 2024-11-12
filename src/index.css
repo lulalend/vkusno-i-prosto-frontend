@@ -6,15 +6,15 @@
   /*--color-primary: #FFFDF3;*/
   --color-primary: #f9f7f2;
   --color-primary-light: #fdfcfa;
-  --color-secondary: #ffdd2d;
+  --color-secondary: #FFDD2D;
   /*--color-secondary-dark: #FBC721;*/
-  --color-secondary-dark: #fab619;
+  --color-secondary-dark: #FAB619;
   --modal-background: #000000a4;
   --white: #ffffff;
   --white-opacity-50: #ffffff80;
   --gray-opacity-40: #80808060;
   --light-gray: #eeeeee;
-  --black: #16161d;
+  --black: #16161D;
 
   --secondary-gradient: radial-gradient(
     at center bottom,
@@ -41,8 +41,4 @@
   font-size: 13px;
   font-weight: 400;
   color: var(--black);
-}
-
-.toast {
-  font-size: 20px;
 }

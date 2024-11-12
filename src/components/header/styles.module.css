@@ -21,3 +21,8 @@
   color: var(--color-secondary-dark);
   letter-spacing: 0.05em;
 }
+
+.profileIcon {
+  width: 3.5em;
+  cursor: pointer;
+}
