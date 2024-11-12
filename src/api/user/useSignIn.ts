@@ -3,7 +3,10 @@ import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 import { signIn } from './userApi.ts';
 import { SignInRequest, SignInResponse } from '../../types/types.ts';
-import { getErrorMessage, getInfoMessage } from '../../constants/userMessages.ts';
+import {
+  getErrorMessage,
+  getInfoMessage,
+} from '../../constants/userMessages.ts';
 
 export const useSignIn = () => {
   const queryClient = useQueryClient();
@@ -26,7 +29,6 @@ export const useSignIn = () => {
       localStorage.setItem('token', data.token);
     },
     onError: (error: AxiosError) => {
-      console.log(error);
       const statusCode = error.status;
 
       if (statusCode) {

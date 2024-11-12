@@ -8,7 +8,7 @@ const responsesMessages: Record<number, string> = {
 
 const infoMessages: Record<string, string> = {
   allFieldsMustBeFilled: 'Упс... Все поля должны быть заполнены',
-  defaultMessage: 'Что-то пошло не так... Уже чиним'
+  defaultMessage: 'Что-то пошло не так... Уже чиним',
 };
 
 export const getErrorMessage = (code: number): string => {

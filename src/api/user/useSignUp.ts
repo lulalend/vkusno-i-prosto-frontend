@@ -5,7 +5,7 @@ import { signUp } from './userApi.ts';
 import { SignUpRequest } from '../../types/types.ts';
 import {
   getErrorMessage,
-  getInfoMessage
+  getInfoMessage,
 } from '../../constants/userMessages.ts';
 
 export const useSignUp = () => {

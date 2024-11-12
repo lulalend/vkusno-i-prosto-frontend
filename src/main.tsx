@@ -13,10 +13,7 @@ createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <App />
       <div style={{ fontSize: '20px' }}>
-        <Toaster
-          position="top-right"
-          reverseOrder={true}
-        />
+        <Toaster position="top-right" reverseOrder={true} />
       </div>
       <ReactQueryDevtools />
     </QueryClientProvider>
