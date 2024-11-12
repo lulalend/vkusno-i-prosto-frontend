@@ -4,7 +4,12 @@ import { Header } from './components/header/Header.tsx';
 import { NoMatch } from './pages/404/NoMatch.tsx';
 
 export const App = () => (
-  <BrowserRouter>
+  <BrowserRouter
+    future={{
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
+    }}
+  >
     <Header />
     <Routes>
       <Route path="/" element={<MainPage />} />

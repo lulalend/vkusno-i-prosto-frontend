@@ -3,7 +3,10 @@ import toast from 'react-hot-toast';
 import { AxiosError } from 'axios';
 import { signUp } from './userApi.ts';
 import { SignUpRequest } from '../../types/types.ts';
-import { getErrorMessage } from '../../constants/responsesMessages.ts';
+import {
+  getErrorMessage,
+  getInfoMessage,
+} from '../../constants/userMessages.ts';
 
 export const useSignUp = () => {
   const { mutate, isPending } = useMutation({
@@ -14,6 +17,8 @@ export const useSignUp = () => {
 
       if (statusCode) {
         toast.error(getErrorMessage(statusCode));
+      } else {
+        toast.error(getInfoMessage('defaultMessage'));
       }
     },
   });

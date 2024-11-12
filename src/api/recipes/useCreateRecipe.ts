@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { AxiosError } from 'axios';
 import { createRecipe } from './recipesApi.ts';
 import { Recipe } from '../../types/types.ts';
-import { getErrorMessage } from '../../constants/responsesMessages.ts';
+import { getErrorMessage } from '../../constants/userMessages.ts';
 
 export const useCreateRecipe = () => {
   const queryClient = useQueryClient();

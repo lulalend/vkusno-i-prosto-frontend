@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { AxiosError } from 'axios';
 import { getRecipeById } from './recipesApi.ts';
-import { getErrorMessage } from '../../constants/responsesMessages.ts';
+import { getErrorMessage } from '../../constants/userMessages.ts';
 import { Recipe } from '../../types/types.ts';
 
 type Props = {

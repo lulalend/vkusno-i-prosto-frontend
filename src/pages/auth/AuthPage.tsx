@@ -4,7 +4,11 @@ import styles from './styles.module.css';
 import { SignUp } from './components/SignUp.tsx';
 import { SignIn } from './components/SignIn.tsx';
 
-export const AuthPage = () => {
+type Props = {
+  onClose: () => void;
+};
+
+export const AuthPage = (props: Props) => {
   const [isSignIn, setIsSignIn] = useState(false);
 
   const handleToggle = () => setIsSignIn((isLogin) => !isLogin);
@@ -15,7 +19,7 @@ export const AuthPage = () => {
         className={classNames(styles.signUp, { [styles.slideUp]: isSignIn })}
       >
         <h2 onClick={isSignIn ? handleToggle : undefined}>Регистрация</h2>
-        <SignUp />
+        <SignUp {...props} />
       </div>
 
       <div
@@ -23,7 +27,7 @@ export const AuthPage = () => {
       >
         <div className={styles.center}>
           <h2 onClick={!isSignIn ? handleToggle : undefined}>Вход</h2>
-          <SignIn />
+          <SignIn {...props} />
         </div>
       </div>
     </div>

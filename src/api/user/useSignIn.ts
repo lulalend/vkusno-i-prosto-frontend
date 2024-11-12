@@ -3,7 +3,10 @@ import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 import { signIn } from './userApi.ts';
 import { SignInRequest, SignInResponse } from '../../types/types.ts';
-import { getErrorMessage } from '../../constants/responsesMessages.ts';
+import {
+  getErrorMessage,
+  getInfoMessage,
+} from '../../constants/userMessages.ts';
 
 export const useSignIn = () => {
   const queryClient = useQueryClient();
@@ -30,6 +33,8 @@ export const useSignIn = () => {
 
       if (statusCode) {
         toast.error(getErrorMessage(statusCode));
+      } else {
+        toast.error(getInfoMessage('defaultMessage'));
       }
     },
   });
