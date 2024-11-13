@@ -14,7 +14,7 @@ export const SignIn = ({ onClose }: Props) => {
   const { mutate: signIn } = useSignIn();
 
   const handleSignIn = () => {
-    if (login === '' || password === '') {
+    if (!login || !password) {
       toast.error(getInfoMessage('allFieldsMustBeFilled'));
 
       return;
