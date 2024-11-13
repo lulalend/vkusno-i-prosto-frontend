@@ -1,4 +1,4 @@
-.headerContainer {
+.container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,8 +10,7 @@
   background-color: var(--white);
 }
 
-.headerTitle,
-.headerAuth {
+.headerTitle, .headerAuth {
   font-size: 1.2em;
   font-weight: 500;
   cursor: pointer;
