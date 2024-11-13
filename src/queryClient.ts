@@ -19,13 +19,13 @@ export const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error) => {
       errorFunction(error);
-    }
+    },
   }),
   defaultOptions: {
     mutations: {
       onError: (error) => {
         errorFunction(error);
-      }
-    }
-  }
+      },
+    },
+  },
 });

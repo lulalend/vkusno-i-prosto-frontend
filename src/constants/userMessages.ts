@@ -19,6 +19,5 @@ export const getErrorMessage = (code: number) => {
   return infoMessages.defaultMessage;
 };
 
-export const getInfoMessage = (str: keyof typeof infoMessages) => (
-  infoMessages[str]
-);
+export const getInfoMessage = (str: keyof typeof infoMessages) =>
+  infoMessages[str];
