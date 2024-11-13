@@ -9,20 +9,16 @@ const responsesMessages: Record<number, string> = {
 const infoMessages: Record<string, string> = {
   allFieldsMustBeFilled: 'Упс... Все поля должны быть заполнены',
   defaultMessage: 'Что-то пошло не так... Уже чиним',
-};
+} as const;
 
-export const getErrorMessage = (code: number): string => {
+export const getErrorMessage = (code: number) => {
   if (code in responsesMessages) {
     return responsesMessages[code];
   }
 
-  return infoMessages['defaultMessage'];
+  return infoMessages.defaultMessage;
 };
 
-export const getInfoMessage = (str: string) => {
-  if (str in infoMessages) {
-    return infoMessages[str];
-  }
-
-  return infoMessages['defaultMessage'];
-};
+export const getInfoMessage = (str: keyof typeof infoMessages) => (
+  infoMessages[str]
+);

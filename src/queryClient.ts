@@ -1,7 +1,7 @@
 import { QueryCache, QueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
-import { getErrorMessage, getInfoMessage } from '../constants/userMessages.ts';
+import { getErrorMessage, getInfoMessage } from './constants/userMessages.ts';
 
 const errorFunction = (error: Error) => {
   if (error instanceof AxiosError) {
