@@ -14,7 +14,11 @@ export const SignIn = ({ onClose }: Props) => {
   const { mutate: signIn } = useSignIn();
 
   const handleSignIn = () => {
-    if (login !== '' && password !== '') {
+    if (login === '' || password === '') {
+      toast.error(getInfoMessage('allFieldsMustBeFilled'));
+
+      return;
+    } else {
       signIn(
         { login, password },
         {
@@ -23,8 +27,6 @@ export const SignIn = ({ onClose }: Props) => {
           },
         },
       );
-    } else {
-      toast.error(getInfoMessage('allFieldsMustBeFilled'));
     }
   };
 
