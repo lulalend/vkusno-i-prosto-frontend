@@ -2,6 +2,7 @@ export type Recipe = {
   id: string;
   name: string;
   image: string;
+  ownerUsername: string;
 };
 
 export type SignInResponse = {
