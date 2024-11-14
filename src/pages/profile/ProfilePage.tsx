@@ -24,10 +24,7 @@ export const ProfilePage = () => {
   return (
     <div className={styles.profilePage}>
       <div className={styles.userInfo}>
-        <img
-          src={defaultProfile}
-          alt="profile picture"
-        />
+        <img src={defaultProfile} alt="profile picture" />
         <div className={styles.userDetails}>
           <p className={styles.userLogin}>{login}</p>
           {/*<p>Отображаемое имя:</p>*/}
@@ -58,16 +55,11 @@ export const ProfilePage = () => {
             Сохранённые
           </div>
         </div>
-        <button
-          className={styles.logoutBtn}
-          onClick={handleLogout}
-        >
+        <button className={styles.logoutBtn} onClick={handleLogout}>
           Выйти
         </button>
       </div>
-      <div className={styles.recipeContainer}>
-
-      </div>
+      <div className={styles.recipeContainer}></div>
     </div>
   );
 };

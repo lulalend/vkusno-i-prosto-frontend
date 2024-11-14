@@ -9,7 +9,7 @@ import { getLogin } from '../../../api/user/token.ts';
 
 type Props = {
   onClose: () => void;
-}
+};
 
 export const SignUp = ({ onClose }: Props) => {
   const [login, setLogin] = useState('');
