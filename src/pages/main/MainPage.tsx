@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './styles.module.css';
 import Filter from '../../assets/svg/filter.svg';
-import FocusFilter from '../../assets/svg/focus-filter.svg';
+import FocusFilter from '../../assets/svg/focusFilter.svg';
 import Search from '../../assets/svg/search.svg';
 
 export const MainPage = () => {

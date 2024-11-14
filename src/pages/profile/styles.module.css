@@ -1,20 +1,108 @@
 .profilePage {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
     height: calc(100vh - 5em);
+    gap: 3em;
+    padding: 0 5em;
 
     background-color: var(--color-primary);
 }
 
-.container {
-    width: 85%;
-    height: 80%;
-    /*margin-top: 5em;*/
+.userInfo {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7em;
+    height: 75vh;
+    width: 200px;
+    padding: 3em 0 1em;
+}
+
+.userInfo > img {
+    width: 75%;
+    padding: 3px;
+
+    border-radius: 15px;
+    border: 3px solid var(--color-secondary);
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userDetails .userLogin{
+    font-size: 1.8em;
+}
+
+.editDetails {
+    color: var(--gray);
+}
+
+.userSections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.userSections div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8em;
+    box-sizing: border-box;
+    width: 110%;
+
+    padding: 1em 1em 1em 1.2em;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.userSections div.activeSection {
+    background-color: var(--color-secondary-dark);
+    color: var(--white);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.userSections div > img {
+    width: 20px;
+}
+
+.logoutBtn {
+    background-color: var(--white);
+    padding: 0.7em;
+    width: 150px;
+    margin-top: auto;
+
+    font-size: 1.4em;
+
+    border-radius: 15px;
+    color: var(--color-secondary-darker);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+
+.recipeContainer {
+    display: flex;
+    flex-direction: row;
+
+    width: 70vw;
+    height: 75vh;
 
     border-radius: 30px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--main-block-shadow);
 
     background-color: var(--white);
 }
+

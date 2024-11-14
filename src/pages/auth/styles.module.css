@@ -51,12 +51,6 @@ h2 {
   box-shadow: var(--focus-shadow);
 }
 
-.inputs input,
-.submitBtn {
-  border: 0;
-  outline: 0;
-}
-
 .inputs input {
   padding: 12px 0;
   line-height: 30px;
