@@ -7,73 +7,16 @@ import MyRecipes from '../../assets/svg/myRecipes.svg';
 import FocusMyRecipes from '../../assets/svg/focusMyRecipes.svg';
 import SavedRecipes from '../../assets/svg/heart.svg';
 import FocusSavedRecipes from '../../assets/svg/whiteHeart.svg';
-import { Recipe } from '../../types/types.ts';
 // prettier-ignore
 import {
   RecipeContainer
 } from '../../components/recipes/container/RecipeContainer.tsx';
+import { recipes } from '../../constants/recipes.ts';
 
 export const ProfilePage = () => {
   const { login } = useParams<{ login: string }>();
   const navigate = useNavigate();
   const [isSavedActive, setIsSavedActive] = useState(false);
-
-  const recipes: Recipe[] = [
-    {
-      id: '1',
-      name: 'Завтрак',
-      image: '',
-      ownerUsername: 'ramazan',
-    },
-    {
-      id: '1',
-      name: 'Завтрак',
-      image: '',
-      ownerUsername: 'ramazan',
-    },
-    {
-      id: '1',
-      name: 'Завтрак',
-      image: '',
-      ownerUsername: 'ramazan',
-    },
-    {
-      id: '1',
-      name: 'Завтрак',
-      image: '',
-      ownerUsername: 'ramazan',
-    },
-    {
-      id: '1',
-      name: 'Завтрак',
-      image: '',
-      ownerUsername: 'ramazan',
-    },
-    {
-      id: '1',
-      name: 'Завтрак',
-      image: '',
-      ownerUsername: 'ramazan',
-    },
-    {
-      id: '1',
-      name: 'Завтрак',
-      image: '',
-      ownerUsername: 'ramazan',
-    },
-    {
-      id: '1',
-      name: 'Завтрак',
-      image: '',
-      ownerUsername: 'ramazan',
-    },
-    {
-      id: '1',
-      name: 'Завтрак',
-      image: '',
-      ownerUsername: 'ramazan',
-    },
-  ];
 
   const handleLogout = () => {
     localStorage.removeItem('token');
