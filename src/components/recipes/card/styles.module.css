@@ -13,6 +13,9 @@
 
 .recipeIcon {
   width: 170px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
 
   border-radius: 25px;
 }
