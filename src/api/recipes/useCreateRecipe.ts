@@ -11,7 +11,9 @@ export const useCreateRecipe = () => {
     mutationFn: (recipe: Recipe) => createRecipe(recipe),
     onSuccess: () => {
       toast.success('Спасибо за рецепт :)');
-      queryClient.invalidateQueries({ queryKey: ['recipes'] });
+      queryClient.invalidateQueries({
+        queryKey: ['recipes'],
+      });
     },
   });
 

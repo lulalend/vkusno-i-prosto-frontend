@@ -10,11 +10,15 @@ type Props = {
 
 export const Modal = ({ isActive, onClose, children }: Props) => (
   <div
-    className={classNames(styles.container, { [styles.active]: isActive })}
+    className={classNames(styles.container, {
+      [styles.active]: isActive,
+    })}
     onClick={() => onClose()}
   >
     <div
-      className={classNames(styles.modalContent, { [styles.active]: isActive })}
+      className={classNames(styles.modalContent, {
+        [styles.active]: isActive,
+      })}
       onClick={(e) => e.stopPropagation()}
     >
       {children}

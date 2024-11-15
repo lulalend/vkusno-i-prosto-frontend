@@ -60,7 +60,11 @@ export default tseslint.config(
           prev: ['const', 'let', 'var'],
           next: ['const', 'let', 'var'],
         },
-        { blankLine: 'always', prev: ['case', 'default'], next: '*' },
+        {
+          blankLine: 'always',
+          prev: ['case', 'default'],
+          next: '*',
+        },
       ],
       'import/order': [
         'error',

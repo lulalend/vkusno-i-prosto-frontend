@@ -8,6 +8,7 @@ import FocusMyRecipes from '../../assets/svg/focusMyRecipes.svg';
 import SavedRecipes from '../../assets/svg/heart.svg';
 import FocusSavedRecipes from '../../assets/svg/whiteHeart.svg';
 import { Recipe } from '../../types/types.ts';
+// prettier-ignore
 import {
   RecipeContainer
 } from '../../components/recipes/container/RecipeContainer.tsx';
@@ -91,7 +92,9 @@ export const ProfilePage = () => {
         </div>
         <div className={styles.userSections}>
           <div
-            className={classNames({ [styles.activeSection]: !isSavedActive })}
+            className={classNames({
+              [styles.activeSection]: !isSavedActive,
+            })}
             onClick={() => setIsSavedActive(false)}
           >
             {isSavedActive ? (
@@ -102,7 +105,9 @@ export const ProfilePage = () => {
             Мои рецепты
           </div>
           <div
-            className={classNames({ [styles.activeSection]: isSavedActive })}
+            className={classNames({
+              [styles.activeSection]: isSavedActive,
+            })}
             onClick={() => setIsSavedActive(true)}
           >
             {isSavedActive ? (
