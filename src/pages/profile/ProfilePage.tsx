@@ -2,20 +2,19 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import classNames from 'classnames';
 import styles from './styles.module.css';
-// import { getUsername } from '../../api/user/token.ts';
 import defaultProfile from '../../assets/img/funnyDefaultProfile.png';
 import MyRecipes from '../../assets/svg/myRecipes.svg';
 import FocusMyRecipes from '../../assets/svg/focusMyRecipes.svg';
 import SavedRecipes from '../../assets/svg/heart.svg';
 import FocusSavedRecipes from '../../assets/svg/whiteHeart.svg';
 import { Recipe } from '../../types/types.ts';
-import { RecipeContainer } from '../../components/recipes/container/RecipeContainer.tsx';
+import {
+  RecipeContainer
+} from '../../components/recipes/container/RecipeContainer.tsx';
 
 export const ProfilePage = () => {
   const { login } = useParams<{ login: string }>();
   const navigate = useNavigate();
-  // const token = localStorage.getItem('token');
-  // const username = getUsername(token);
   const [isSavedActive, setIsSavedActive] = useState(false);
 
   const recipes: Recipe[] = [
@@ -119,12 +118,8 @@ export const ProfilePage = () => {
         </button>
       </div>
       <div className={styles.container}>
-        {/*<img src={LeftArrow} alt='Left arrow' />*/}
-        {/*<div className={styles.containerContent}>*/}
         <button>Добавить рецепт</button>
         <RecipeContainer recipes={recipes} />
-        {/*</div>*/}
-        {/*<img src={RightArrow} alt='Right arrow' />*/}
       </div>
     </div>
   );
