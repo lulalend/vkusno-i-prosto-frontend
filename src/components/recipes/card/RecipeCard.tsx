@@ -1,7 +1,6 @@
 import styles from './styles.module.css';
 import { Recipe } from '../../../types/types.ts';
-import DefaultRecipe from '../../../assets/img/img.png';
-// import Edit from '../../../assets/svg/edit.svg';
+import DefaultRecipe from '../../../assets/img/defaultRecipe.png';
 
 type Props = {
   recipe: Recipe;

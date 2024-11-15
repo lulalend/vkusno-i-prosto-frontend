@@ -3,6 +3,10 @@ import styles from './styles.module.css';
 import Filter from '../../assets/svg/filter.svg';
 import FocusFilter from '../../assets/svg/focusFilter.svg';
 import Search from '../../assets/svg/search.svg';
+import LeftArrow from '../../assets/svg/leftArrow.svg';
+import DisabledLeftArrow from '../../assets/svg/disabledLeftArrow.svg';
+import RightArrow from '../../assets/svg/rightArrow.svg';
+import DisabledRightArrow from '../../assets/svg/disabledRightArrow.svg';
 // prettier-ignore
 import {
   RecipeContainer
@@ -60,23 +64,21 @@ export const MainPage = () => {
       <div className={styles.recipes}>
         <RecipeContainer recipes={currentRecipes} />
         <div className={styles.pagination}>
-          <button
-            className={styles.pageButton}
+          <img
+            src={currentPage === 1 ? DisabledLeftArrow : LeftArrow}
             onClick={handlePrevPage}
-            disabled={currentPage === 1}
-          >
-            Назад
-          </button>
+            aria-disabled={currentPage === 1}
+            alt="Left arrow"
+          />
           <span>
             Страница {currentPage} из {totalPages}
           </span>
-          <button
-            className={styles.pageButton}
+          <img
+            src={currentPage === totalPages ? DisabledRightArrow : RightArrow}
             onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-          >
-            Вперед
-          </button>
+            aria-disabled={currentPage === totalPages}
+            alt="Right arrow"
+          />
         </div>
       </div>
     </div>
