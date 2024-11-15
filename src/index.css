@@ -7,27 +7,35 @@
   --color-primary: #f9f7f2;
   --color-primary-light: #fdfcfa;
   --color-secondary: #ffdd2d;
-  /*--color-secondary-dark: #FBC721;*/
-  --color-secondary-dark: #fab619;
+  --color-secondary-dark: #fbc721;
+  --color-secondary-darker: #fab619;
   --modal-background: #000000a4;
   --white: #ffffff;
   --white-opacity-50: #ffffff80;
+  --gray: #808080;
+  --gray-opacity-60: #808080a0;
   --gray-opacity-40: #80808060;
+  --gray-shadow: #0a254045;
   --light-gray: #eeeeee;
   --black: #16161d;
 
   --secondary-gradient: radial-gradient(
     at center bottom,
     var(--color-secondary),
-    var(--color-secondary-dark)
+    var(--color-secondary-darker)
   );
 
   --shadow: 0 2px 5px var(--gray-opacity-40), -2px -2px 5px var(--white) inset;
+  --button-shadow: 3px 3px 10px -2px var(--gray-opacity-40),
+    var(--gray) 0px 8px 16px -8px;
+  --shadow-without-inset: 0 2px 5px var(--gray-opacity-40);
   --hover-shadow: 2px 2px 5px var(--gray-opacity-40), -2px -2px 5px var(--white);
   --inner-shadow: inset 2px 2px 5px var(--gray-opacity-40),
     inset -5px -5px 10px var(--white-opacity-50);
   --focus-shadow: inset 1px 1px 2px var(--gray-opacity-40),
     inset -1px -1px 2px var(--white);
+  --main-block-shadow: var(--gray-opacity-40) 0px 20px 20px -20px,
+    var(--gray-shadow) 0px -2px 6px 0px inset;
 
   /*Text*/
   --font-family: 'Fira Sans', Helvetica, Arial, sans-serif;
@@ -41,8 +49,11 @@
   font-size: 13px;
   font-weight: 400;
   color: var(--black);
+  box-sizing: border-box;
 }
 
-.toast {
-  font-size: 20px;
+input,
+button {
+  border: 0;
+  outline: 0;
 }

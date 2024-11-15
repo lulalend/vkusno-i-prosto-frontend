@@ -1,0 +1,13 @@
+.recipeContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  place-items: center;
+  place-content: start;
+
+  width: 100%;
+  height: 100%;
+  padding: 0.7em 0.5em;
+
+  overflow: scroll;
+}

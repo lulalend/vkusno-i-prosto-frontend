@@ -16,14 +16,18 @@ export const AuthPage = (props: Props) => {
   return (
     <div className={styles.container}>
       <div
-        className={classNames(styles.signUp, { [styles.slideUp]: isSignIn })}
+        className={classNames(styles.signUp, {
+          [styles.slideUp]: isSignIn,
+        })}
       >
         <h2 onClick={isSignIn ? handleToggle : undefined}>Регистрация</h2>
         <SignUp {...props} />
       </div>
 
       <div
-        className={classNames(styles.signIn, { [styles.slideUp]: !isSignIn })}
+        className={classNames(styles.signIn, {
+          [styles.slideUp]: !isSignIn,
+        })}
       >
         <div className={styles.center}>
           <h2 onClick={!isSignIn ? handleToggle : undefined}>Вход</h2>
