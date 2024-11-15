@@ -15,7 +15,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.7em;
-  height: 75vh;
+  height: 80vh;
   width: 200px;
   padding: 2em 0 1em;
 }
@@ -70,8 +70,7 @@
 .userSections div.activeSection {
   background-color: var(--color-secondary-dark);
   color: var(--white);
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-radius: 15px;
 }
 
 .userSections div > img {
@@ -92,16 +91,46 @@
   cursor: pointer;
 }
 
-.recipeContainer {
+.container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.7em;
 
-  width: 82vw;
-  height: 75vh;
-  padding: 2em 2.5em;
+  width: 70vw;
+  height: 80vh;
+  padding: 2em 3.2em 1.3em;
 
   border-radius: 30px;
   box-shadow: var(--main-block-shadow);
 
   background-color: var(--white);
+}
+
+.container > img {
+  width: 60px;
+  cursor: pointer;
+  align-self: center;
+}
+
+.container button {
+  align-self: end;
+
+  background-color: var(--color-secondary-dark);
+  color: var(--white);
+  border-radius: 15px;
+  font-size: 1.2em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-without-inset);
+
+  padding: 1em;
+  /*margin-left: 1em;*/
+}
+
+.containerContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
 }

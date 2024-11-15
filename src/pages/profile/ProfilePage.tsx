@@ -9,7 +9,7 @@ import FocusMyRecipes from '../../assets/svg/focusMyRecipes.svg';
 import SavedRecipes from '../../assets/svg/heart.svg';
 import FocusSavedRecipes from '../../assets/svg/whiteHeart.svg';
 import { Recipe } from '../../types/types.ts';
-import { RecipeCard } from '../../components/card/RecipeCard.tsx';
+import { RecipeContainer } from '../../components/recipes/container/RecipeContainer.tsx';
 
 export const ProfilePage = () => {
   const { login } = useParams<{ login: string }>();
@@ -17,13 +17,63 @@ export const ProfilePage = () => {
   // const token = localStorage.getItem('token');
   // const username = getUsername(token);
   const [isSavedActive, setIsSavedActive] = useState(false);
-  
-  const recipe: Recipe = {
-    id: '1',
-    name: 'Bowl',
-    image: '',
-    ownerUsername: 'ramazan',
-  };
+
+  const recipes: Recipe[] = [
+    {
+      id: '1',
+      name: 'Завтрак',
+      image: '',
+      ownerUsername: 'ramazan',
+    },
+    {
+      id: '1',
+      name: 'Завтрак',
+      image: '',
+      ownerUsername: 'ramazan',
+    },
+    {
+      id: '1',
+      name: 'Завтрак',
+      image: '',
+      ownerUsername: 'ramazan',
+    },
+    {
+      id: '1',
+      name: 'Завтрак',
+      image: '',
+      ownerUsername: 'ramazan',
+    },
+    {
+      id: '1',
+      name: 'Завтрак',
+      image: '',
+      ownerUsername: 'ramazan',
+    },
+    {
+      id: '1',
+      name: 'Завтрак',
+      image: '',
+      ownerUsername: 'ramazan',
+    },
+    {
+      id: '1',
+      name: 'Завтрак',
+      image: '',
+      ownerUsername: 'ramazan',
+    },
+    {
+      id: '1',
+      name: 'Завтрак',
+      image: '',
+      ownerUsername: 'ramazan',
+    },
+    {
+      id: '1',
+      name: 'Завтрак',
+      image: '',
+      ownerUsername: 'ramazan',
+    },
+  ];
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -68,8 +118,13 @@ export const ProfilePage = () => {
           Выйти
         </button>
       </div>
-      <div className={styles.recipeContainer}>
-        <RecipeCard recipe={recipe} />
+      <div className={styles.container}>
+        {/*<img src={LeftArrow} alt='Left arrow' />*/}
+        {/*<div className={styles.containerContent}>*/}
+        <button>Добавить рецепт</button>
+        <RecipeContainer recipes={recipes} />
+        {/*</div>*/}
+        {/*<img src={RightArrow} alt='Right arrow' />*/}
       </div>
     </div>
   );
