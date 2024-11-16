@@ -88,7 +88,6 @@
   border-radius: 15px;
   color: var(--color-secondary-darker);
   box-shadow: var(--shadow);
-  cursor: pointer;
 }
 
 .container {

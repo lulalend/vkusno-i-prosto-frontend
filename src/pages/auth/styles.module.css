@@ -81,7 +81,6 @@ h2 {
   font-weight: 500;
   letter-spacing: 0.07em;
 
-  cursor: pointer;
   visibility: visible;
   -webkit-transition: all 0.3s ease;
 }
