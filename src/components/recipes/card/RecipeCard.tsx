@@ -1,7 +1,6 @@
 import styles from './styles.module.css';
 import { Recipe } from '../../../types/types.ts';
-import DefaultRecipe from '../../../assets/img/img.png';
-import Edit from '../../../assets/svg/edit.svg';
+import DefaultRecipe from '../../../assets/img/defaultRecipe.png';
 
 type Props = {
   recipe: Recipe;
@@ -19,7 +18,6 @@ export const RecipeCard = ({ recipe }: Props) => (
         <p className={styles.name}>{recipe.name}</p>
         <p className={styles.username}>{recipe.ownerUsername}</p>
       </div>
-      <img src={Edit} className={styles.editIcon} alt="Edit icon" />
     </div>
   </div>
 );
