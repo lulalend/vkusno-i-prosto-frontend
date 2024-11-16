@@ -1,26 +1,36 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import styles from './styles.module.css';
 // import { useRecipeById } from '../../api/recipes/useRecipeById.ts';
 import DefaultRecipe from '../../assets/img/defaultRecipe.png';
 import { getUsername } from '../../api/user/token.ts';
+import { RecipeForUpdate } from '../../types/types.ts';
+import { RecipeForm } from '../../components/form/RecipeForm.tsx';
+import { Modal } from '../../components/modal/Modal.tsx';
+import { useUpdateRecipe } from '../../api/recipes/useUpdateRecipe.ts';
+import { useDeleteRecipe } from '../../api/recipes/useDeleteRecipe.ts';
 
 export const RecipePage = () => {
   const { id } = useParams<{ id: string }>();
   const [checkedIngredients, setCheckedIngredients] = useState<string[]>(
-    JSON.parse(localStorage.getItem('ingredients') || '[]')
+    JSON.parse(localStorage.getItem('ingredients') || '[]'),
   );
+  const [isFormActive, setIsFormActive] = useState(false);
+  const navigate = useNavigate();
   // const { data: recipe, isLoading } = useRecipeById({ id: id ?? '' });
+  const { mutate: updateRecipe } = useUpdateRecipe();
+  const { mutate: deleteRecipe } = useDeleteRecipe();
 
   const username = getUsername(localStorage.getItem('token'));
   const recipe = {
-    id: id,
+    id: '1',
     name: 'Завтрак',
     image: '',
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: 'https://www.youtube.com',
-    ownerUsername: 'ramazan'
+    showUsername: false,
+    ownerUsername: 'ramazan',
   };
 
   // if (isLoading) {
@@ -43,18 +53,34 @@ export const RecipePage = () => {
     });
   };
 
+  const handleUpdateRecipe = (newRecipe: RecipeForUpdate) => {
+    updateRecipe(newRecipe);
+    setIsFormActive(false);
+  };
+
+  const handleDeleteRecipe = () => {
+    if (id) {
+      deleteRecipe(id, {
+        onSuccess: () => {
+          navigate(-1);
+        },
+      });
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.buttons}>
         {recipe.ownerUsername !== username ? (
           <>
-            <button>Изменить рецепт</button>
-            <button>Удалить рецепт</button>
+            <button onClick={() => setIsFormActive(true)}>
+              Изменить рецепт
+            </button>
+            <button onClick={handleDeleteRecipe}>Удалить рецепт</button>
           </>
         ) : (
           <button>Сохранить</button>
-        )
-        }
+        )}
       </div>
       <h1 className={styles.title}>{recipe.name}</h1>
       <p className={styles.owner}>Автор: {recipe.ownerUsername}</p>
@@ -70,8 +96,8 @@ export const RecipePage = () => {
           {recipe.videoLink && (
             <a
               href={recipe.videoLink}
-              target='_blank'
-              rel='noopener noreferrer'
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.videoLink}
             >
               Смотреть видео
@@ -89,7 +115,7 @@ export const RecipePage = () => {
                   onClick={() => handleIngredientCheck(ingredient)}
                 >
                   <input
-                    type='radio'
+                    type="radio"
                     checked={checkedIngredients.includes(ingredient)}
                   />
                   <span
@@ -119,6 +145,10 @@ export const RecipePage = () => {
           </section>
         </div>
       </div>
+
+      <Modal isActive={isFormActive} onClose={() => setIsFormActive(false)}>
+        <RecipeForm initialRecipe={recipe} onSubmit={handleUpdateRecipe} />
+      </Modal>
     </div>
   );
 };

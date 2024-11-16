@@ -17,7 +17,7 @@ export const RecipeCard = ({ recipe }: Props) => {
   return (
     <div
       className={styles.recipeCard}
-      onClick={ () => goToRecipePage(recipe.id) }
+      onClick={() => goToRecipePage(recipe.id)}
     >
       <img
         src={recipe.image ? recipe.image : DefaultRecipe}

@@ -1,5 +1,9 @@
 import axios from 'axios';
-import type { Recipe } from '../../types/types.ts';
+import type {
+  Recipe,
+  RecipeForCreate,
+  RecipeForUpdate,
+} from '../../types/types.ts';
 
 const URL: string = 'http://147.45.165.69:8080/v1/recipes';
 const config = {
@@ -13,5 +17,10 @@ export const getAllRecipes = () => axios.get<Recipe[]>(URL);
 
 export const getRecipeById = (id: string) => axios.get<Recipe>(`${URL}/${id}`);
 
-// возможно тут в аргументе типа пригодится Omit
-export const createRecipe = (recipe: Recipe) => axios.post(URL, recipe, config);
+export const createRecipe = (recipe: RecipeForCreate) =>
+  axios.post(URL, recipe, config);
+
+export const updateRecipe = (recipe: RecipeForUpdate) =>
+  axios.put(URL, recipe, config);
+
+export const deleteRecipe = (id: string) => axios.put(`${URL}/${id}`, config);

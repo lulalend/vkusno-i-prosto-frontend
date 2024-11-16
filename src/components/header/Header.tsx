@@ -7,7 +7,7 @@ import Profile from '../../assets/svg/profile.svg';
 import { getLogin } from '../../api/user/token.ts';
 
 export const Header = () => {
-  const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
+  const [isAuthActive, setIsAuthActive] = useState(false);
   const navigate = useNavigate();
 
   const token = localStorage.getItem('token');
@@ -41,11 +41,9 @@ export const Header = () => {
         </div>
       )}
 
-      {isAuthActive && (
-        <Modal isActive={isAuthActive} onClose={() => setIsAuthActive(false)}>
-          <AuthPage onClose={() => setIsAuthActive(false)} />
-        </Modal>
-      )}
+      <Modal isActive={isAuthActive} onClose={() => setIsAuthActive(false)}>
+        <AuthPage onClose={() => setIsAuthActive(false)} />
+      </Modal>
     </div>
   );
 };
