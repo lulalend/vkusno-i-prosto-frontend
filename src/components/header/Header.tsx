@@ -24,7 +24,7 @@ export const Header = () => {
   return (
     <div className={styles.container}>
       <span className={styles.headerTitle} onClick={() => navigate('/')}>
-        <img src={Logo} className={styles.logoIcon} alt='Логотип' />
+        <img src={Logo} className={styles.logoIcon} alt="Логотип" />
         Вкусно и Просто
       </span>
       {token ? (

@@ -28,7 +28,8 @@
   letter-spacing: 0.05em;
 }
 
-.profileIcon, .logoIcon {
+.profileIcon,
+.logoIcon {
   width: 3.5em;
   cursor: pointer;
 }

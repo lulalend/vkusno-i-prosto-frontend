@@ -86,10 +86,7 @@ export const RecipeForm = ({ initialRecipe, onSubmit }: Props) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={styles.container}
-    >
+    <form onSubmit={handleSubmit} className={styles.container}>
       <h3>{isEditMode ? 'Редактирование рецепта' : 'Добавление рецепта'}</h3>
 
       <label>
