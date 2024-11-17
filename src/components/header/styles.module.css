@@ -4,25 +4,32 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 5em;
-  padding: 0 3em;
+  height: 5.4em;
+  padding: 0 3em 0 1em;
 
   background-color: var(--white);
 }
 
 .headerTitle,
 .headerAuth {
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-weight: 500;
   cursor: pointer;
 }
 
 .headerTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+
   color: var(--color-secondary-darker);
   letter-spacing: 0.05em;
 }
 
-.profileIcon {
-  width: 3em;
+.profileIcon,
+.logoIcon {
+  width: 3.5em;
   cursor: pointer;
 }

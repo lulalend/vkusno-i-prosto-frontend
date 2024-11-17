@@ -12,21 +12,32 @@ import {
   RecipeContainer
 } from '../../components/recipes/container/RecipeContainer.tsx';
 import { recipes } from '../../constants/recipes.ts';
+import { RecipeForCreate } from '../../types/types.ts';
+import { useCreateRecipe } from '../../api/recipes/useCreateRecipe.ts';
+import { Modal } from '../../components/modal/Modal.tsx';
+import { RecipeForm } from '../../components/form/RecipeForm.tsx';
 
 export const ProfilePage = () => {
   const { login } = useParams<{ login: string }>();
   const navigate = useNavigate();
   const [isSavedActive, setIsSavedActive] = useState(false);
+  const [isFormActive, setIsFormActive] = useState(false);
+  const { mutate: createRecipe } = useCreateRecipe();
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/');
   };
 
+  const handleCreateRecipe = (newRecipe: RecipeForCreate) => {
+    createRecipe(newRecipe);
+    setIsFormActive(true);
+  };
+
   return (
     <div className={styles.profilePage}>
       <div className={styles.userInfo}>
-        <img src={defaultProfile} alt="profile picture" />
+        <img src={defaultProfile} alt="Profile picture" />
         <div className={styles.userDetails}>
           <p className={styles.userLogin}>{login}</p>
           {/*<p>Отображаемое имя:</p>*/}
@@ -69,6 +80,10 @@ export const ProfilePage = () => {
         <button>Добавить рецепт</button>
         <RecipeContainer recipes={recipes} />
       </div>
+
+      <Modal isActive={isFormActive} onClose={() => setIsFormActive(false)}>
+        <RecipeForm onSubmit={handleCreateRecipe} />
+      </Modal>
     </div>
   );
 };

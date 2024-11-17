@@ -4,10 +4,11 @@ import styles from './styles.module.css';
 import { Modal } from '../modal/Modal.tsx';
 import { AuthPage } from '../../pages/auth/AuthPage.tsx';
 import Profile from '../../assets/svg/profile.svg';
+import Logo from '../../assets/svg/logo.svg';
 import { getLogin } from '../../api/user/token.ts';
 
 export const Header = () => {
-  const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
+  const [isAuthActive, setIsAuthActive] = useState(false);
   const navigate = useNavigate();
 
   const token = localStorage.getItem('token');
@@ -23,6 +24,7 @@ export const Header = () => {
   return (
     <div className={styles.container}>
       <span className={styles.headerTitle} onClick={() => navigate('/')}>
+        <img src={Logo} className={styles.logoIcon} alt="Логотип" />
         Вкусно и Просто
       </span>
       {token ? (
@@ -41,11 +43,9 @@ export const Header = () => {
         </div>
       )}
 
-      {isAuthActive && (
-        <Modal isActive={isAuthActive} onClose={() => setIsAuthActive(false)}>
-          <AuthPage onClose={() => setIsAuthActive(false)} />
-        </Modal>
-      )}
+      <Modal isActive={isAuthActive} onClose={() => setIsAuthActive(false)}>
+        <AuthPage onClose={() => setIsAuthActive(false)} />
+      </Modal>
     </div>
   );
 };
