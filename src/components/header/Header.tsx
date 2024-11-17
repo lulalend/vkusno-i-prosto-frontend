@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 import { Modal } from '../modal/Modal.tsx';
 import { AuthPage } from '../../pages/auth/AuthPage.tsx';
 import Profile from '../../assets/svg/profile.svg';
+import Logo from '../../assets/svg/logo.svg';
 import { getLogin } from '../../api/user/token.ts';
 
 export const Header = () => {
@@ -23,6 +24,7 @@ export const Header = () => {
   return (
     <div className={styles.container}>
       <span className={styles.headerTitle} onClick={() => navigate('/')}>
+        <img src={Logo} className={styles.logoIcon} alt='Логотип' />
         Вкусно и Просто
       </span>
       {token ? (

@@ -102,12 +102,13 @@
 .recipes {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   gap: 1em;
   flex-grow: 1;
   width: 100%;
-  height: 100%;
 
-  margin: 3em 0 0;
+  margin: 3em 0 7em;
 }
 
 .pagination {

@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import styles from './styles.module.css';
 import { Recipe, RecipeForCreate, RecipeForUpdate } from '../../types/types.ts';
 
 type Props =
@@ -87,9 +88,9 @@ export const RecipeForm = ({ initialRecipe, onSubmit }: Props) => {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ display: 'flex', flexDirection: 'column', gap: '1em' }}
+      className={styles.container}
     >
-      <h1>{isEditMode ? 'Редактирование рецепта' : 'Добавление рецепта'}</h1>
+      <h3>{isEditMode ? 'Редактирование рецепта' : 'Добавление рецепта'}</h3>
 
       <label>
         Название:
@@ -107,14 +108,13 @@ export const RecipeForm = ({ initialRecipe, onSubmit }: Props) => {
           type="text"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          required
         />
       </label>
 
       <fieldset>
         <legend>Ингредиенты:</legend>
         {ingredients.map((ingredient, index) => (
-          <div key={index} style={{ display: 'flex', gap: '0.5em' }}>
+          <div key={index} className={styles.field}>
             <input
               type="text"
               value={ingredient}
@@ -134,7 +134,7 @@ export const RecipeForm = ({ initialRecipe, onSubmit }: Props) => {
       <fieldset>
         <legend>Шаги приготовления:</legend>
         {steps.map((step, index) => (
-          <div key={index} style={{ display: 'flex', gap: '0.5em' }}>
+          <div key={index} className={styles.field}>
             <input
               type="text"
               value={step}
@@ -160,7 +160,7 @@ export const RecipeForm = ({ initialRecipe, onSubmit }: Props) => {
         />
       </label>
 
-      <label>
+      <label className={styles.checkbox}>
         <input
           type="checkbox"
           checked={showUsername}
@@ -169,7 +169,7 @@ export const RecipeForm = ({ initialRecipe, onSubmit }: Props) => {
         Показывать имя пользователя
       </label>
 
-      <button type="submit">
+      <button type="submit" className={styles.mainBtn}>
         {isEditMode ? 'Сохранить изменения' : 'Добавить рецепт'}
       </button>
     </form>
