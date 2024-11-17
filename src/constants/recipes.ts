@@ -8,6 +8,7 @@ export const recipes: Recipe[] = [
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: '',
+    showUsername: true,
     ownerUsername: 'ramazan',
   },
   {
@@ -17,6 +18,7 @@ export const recipes: Recipe[] = [
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: '',
+    showUsername: true,
     ownerUsername: 'ramazan',
   },
   {
@@ -26,6 +28,7 @@ export const recipes: Recipe[] = [
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: '',
+    showUsername: true,
     ownerUsername: 'ramazan',
   },
   {
@@ -35,6 +38,7 @@ export const recipes: Recipe[] = [
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: '',
+    showUsername: true,
     ownerUsername: 'ramazan',
   },
   {
@@ -44,6 +48,7 @@ export const recipes: Recipe[] = [
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: '',
+    showUsername: true,
     ownerUsername: 'ramazan',
   },
   {
@@ -53,6 +58,7 @@ export const recipes: Recipe[] = [
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: '',
+    showUsername: true,
     ownerUsername: 'ramazan',
   },
   {
@@ -62,6 +68,7 @@ export const recipes: Recipe[] = [
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: '',
+    showUsername: true,
     ownerUsername: 'ramazan',
   },
   {
@@ -71,6 +78,7 @@ export const recipes: Recipe[] = [
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: '',
+    showUsername: true,
     ownerUsername: 'ramazan',
   },
   {
@@ -80,6 +88,7 @@ export const recipes: Recipe[] = [
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: '',
+    showUsername: true,
     ownerUsername: 'ramazan',
   },
 ];
