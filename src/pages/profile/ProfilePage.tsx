@@ -77,7 +77,7 @@ export const ProfilePage = () => {
         </button>
       </div>
       <div className={styles.container}>
-        <button>Добавить рецепт</button>
+        <button onClick={() => setIsFormActive(true)}>Добавить рецепт</button>
         <RecipeContainer recipes={recipes} />
       </div>
 
