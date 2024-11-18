@@ -25,7 +25,7 @@ export const RecipePage = () => {
   const username = getUsername(localStorage.getItem('token'));
 
   if (isLoading) {
-    return LoadingPage;
+    return <LoadingPage />;
   }
 
   if (!recipe) {
