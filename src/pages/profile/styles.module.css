@@ -127,9 +127,8 @@
   margin-right: 0.7em;
 }
 
-.containerContent {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100%;
+.message {
+  margin-top: 20%;
+  margin-left: 30%;
+  font-size: 2em;
 }

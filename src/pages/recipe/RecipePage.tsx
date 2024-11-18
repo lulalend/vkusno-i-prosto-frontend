@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import styles from './styles.module.css';
-// import { useRecipeById } from '../../api/recipes/useRecipeById.ts';
 import DefaultRecipe from '../../assets/img/defaultRecipe.png';
 import { getUsername } from '../../api/user/token.ts';
 import { RecipeForUpdate } from '../../types/types.ts';
@@ -9,6 +8,8 @@ import { RecipeForm } from '../../components/form/RecipeForm.tsx';
 import { Modal } from '../../components/modal/Modal.tsx';
 import { useUpdateRecipe } from '../../api/recipes/useUpdateRecipe.ts';
 import { useDeleteRecipe } from '../../api/recipes/useDeleteRecipe.ts';
+import { useRecipeById } from '../../api/recipes/useRecipeById.ts';
+import { LoadingPage } from '../loading/LoadingPage.tsx';
 
 export const RecipePage = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,25 +18,15 @@ export const RecipePage = () => {
   );
   const [isFormActive, setIsFormActive] = useState(false);
   const navigate = useNavigate();
-  // const { data: recipe, isLoading } = useRecipeById({ id: id ?? '' });
+  const { data: recipe, isLoading } = useRecipeById({ id: id ?? '' });
   const { mutate: updateRecipe } = useUpdateRecipe();
   const { mutate: deleteRecipe } = useDeleteRecipe();
 
   const username = getUsername(localStorage.getItem('token'));
-  const recipe = {
-    id: '1',
-    name: 'Завтрак',
-    image: '',
-    ingredients: ['сосиска', 'картошка'],
-    steps: ['Порезать', 'Подождать 5 минут'],
-    videoLink: 'https://www.youtube.com',
-    showUsername: true,
-    ownerUsername: 'ramazan',
-  };
 
-  // if (isLoading) {
-  //   return <div>Загрузка рецепта...</div>;
-  // }
+  if (isLoading) {
+    return LoadingPage;
+  }
 
   if (!recipe) {
     return <div>Рецепт не найден. Пожалуйста, вернитесь назад.</div>;
@@ -68,10 +59,12 @@ export const RecipePage = () => {
     }
   };
 
+  console.log(recipe.ownerUsername, username);
+
   return (
     <div className={styles.container}>
       <div className={styles.buttons}>
-        {recipe.ownerUsername !== username ? (
+        {recipe.ownerUsername === username ? (
           <>
             <button onClick={() => setIsFormActive(true)}>
               Изменить рецепт
@@ -83,7 +76,7 @@ export const RecipePage = () => {
         )}
       </div>
       <h1 className={styles.title}>{recipe.name}</h1>
-      {recipe.showUsername && (
+      {recipe.ownerUsername && (
         <p className={styles.owner}>Автор: {recipe.ownerUsername}</p>
       )}
 

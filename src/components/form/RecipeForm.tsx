@@ -68,6 +68,7 @@ export const RecipeForm = ({ initialRecipe, onSubmit }: Props) => {
         steps,
         videoLink,
         showUsername,
+        tags: [],
       };
 
       onSubmit(newRecipe);
@@ -79,6 +80,7 @@ export const RecipeForm = ({ initialRecipe, onSubmit }: Props) => {
         steps,
         videoLink,
         showUsername,
+        tags: [],
       };
 
       onSubmit(newRecipe);

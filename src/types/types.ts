@@ -7,6 +7,7 @@ export type Recipe = {
   videoLink: string;
   showUsername: boolean;
   ownerUsername: string;
+  tags: string[];
 };
 
 export type RecipeForUpdate = Omit<Recipe, 'ownerUsername'>;
