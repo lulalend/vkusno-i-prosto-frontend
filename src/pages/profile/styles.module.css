@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 5.4em);
+  min-height: calc(100vh - 5.4em);
   gap: 3em;
   padding: 0 5em;
 
@@ -132,4 +132,87 @@
   width: 100%;
   text-align: center;
   font-size: 2em;
+}
+
+@media (max-width: 768px) {
+  .profilePage {
+    flex-direction: column;
+
+    padding: 0 0 2em;
+    gap: 1em;
+  }
+
+  .userInfo {
+    display: grid;
+    grid-template-areas:
+      'img logout'
+      'details details'
+      'sections sections';
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+    height: auto;
+    padding: 1em;
+  }
+
+  .userInfo > img {
+    grid-area: img;
+    width: 100%;
+    margin: 10px 0 0 40px;
+  }
+
+  .userSections {
+    grid-area: sections;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .userDetails {
+    grid-area: details;
+  }
+
+  .logoutBtn {
+    grid-area: logout;
+    margin-top: 0;
+    width: 100px;
+    padding: 1em;
+    font-size: 1em;
+  }
+
+  .userInfo > img {
+    width: 50%;
+  }
+
+  .userSections {
+    flex-direction: row;
+    gap: 1em;
+    margin-top: 1em;
+  }
+
+  .userSections div {
+    font-size: 1em;
+  }
+
+  .logoutBtn {
+    margin-top: 1em;
+  }
+
+  .container {
+    padding: 2em 1em 1em;
+    width: 90%;
+  }
+
+  .container button {
+    font-size: 1em;
+    width: auto;
+    align-self: center;
+  }
+
+  .message {
+    font-size: 1.2em;
+  }
 }

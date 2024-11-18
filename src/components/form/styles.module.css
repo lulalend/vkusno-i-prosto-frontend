@@ -6,10 +6,8 @@
   padding: 2em 3em 3em;
   border-radius: 25px;
   box-shadow: var(--modal-shadow);
-
   background-color: var(--white);
   width: 500px;
-
   gap: 1.2em;
   font-size: 1.5em;
 }
@@ -19,7 +17,6 @@ form h3 {
   text-align: center;
   font-size: 1.25em;
   font-weight: 500;
-
   color: var(--color-secondary-darker);
 }
 
@@ -39,10 +36,15 @@ form label {
   width: 100%;
 }
 
+.checkbox input {
+  width: 20%;
+}
+
 form input {
   border: 1px solid var(--black);
   border-radius: 15px;
   padding: 0.3em 0 0.3em 0.5em;
+  width: 100%; /* Ensure inputs take full width */
 }
 
 fieldset {
@@ -64,10 +66,10 @@ fieldset > button {
 
 .field {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 2em;
+  flex-direction: column; /* Change to column for mobile */
+  align-items: flex-start;
+  gap: 1em;
+  margin: 0;
 }
 
 .field button {
@@ -77,6 +79,7 @@ fieldset > button {
   color: var(--white);
   font-weight: 400;
   letter-spacing: 0.05em;
+  align-self: flex-start; /* Align button to the left */
 }
 
 .mainBtn {
@@ -88,4 +91,65 @@ fieldset > button {
   color: var(--white);
   font-weight: 500;
   font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 1em;
+  }
+
+  form h3 {
+    font-size: 1.2em;
+  }
+
+  form label {
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  form label {
+    width: 80%;
+    align-items: center;
+  }
+
+  .checkbox {
+    font-size: 1em;
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  form input {
+    font-size: 1em;
+    padding: 0.3em 0.5em;
+  }
+
+  fieldset {
+    gap: 0.8em;
+  }
+
+  .field {
+    margin: 0.5em 0;
+  }
+
+  .mainBtn {
+    font-size: 1rem;
+    padding: 0.8em;
+  }
+
+  .field button {
+    width: 100%;
+    padding: 0.7em 1.5em;
+    font-size: 1em;
+  }
+
+  .field input {
+    font-size: 1em;
+    padding: 0.7em;
+    width: 100%;
+  }
 }

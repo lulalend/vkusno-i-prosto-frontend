@@ -43,7 +43,7 @@
 }
 
 .name,
-.userName {
+.username {
   max-width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -60,4 +60,28 @@
 
 .recipeCard .editIcon {
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .recipeCard {
+    width: 150px;
+    height: auto;
+    padding: 0.5em 1em;
+  }
+
+  .recipeIcon {
+    width: 100%;
+    height: auto;
+  }
+
+  .recipeDetails {
+    width: 100%;
+  }
+
+  .name,
+  .username {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

@@ -26,7 +26,8 @@ export const MainPage = () => {
   const { recipes, total, isLoading } = useRecipes(limit, offset);
 
   const calculateRecipesPerPage = (containerWidth: number) => {
-    const recipeWidth = 220;
+    const isMobile = window.innerWidth < 768;
+    const recipeWidth = isMobile ? 150 : 220;
 
     return Math.floor(containerWidth / recipeWidth) * 2;
   };
