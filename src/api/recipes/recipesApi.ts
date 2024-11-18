@@ -13,7 +13,7 @@ const config = {
   },
 };
 
-export const getAllRecipes = () => axios.get<Recipe[]>(URL);
+export const getAllRecipes = () => axios.get<Recipe[]>(URL, config);
 
 export const getRecipeById = (id: string) => axios.get<Recipe>(`${URL}/${id}`);
 
