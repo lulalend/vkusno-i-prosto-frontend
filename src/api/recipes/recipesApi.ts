@@ -7,7 +7,6 @@ import type {
 } from '../../types/types.ts';
 
 const URL: string = 'http://147.45.165.69:8080/v1/recipes';
-const FAVORITE_URL: string = 'http://147.45.165.69:8080/v1/favorites';
 const config = {
   headers: {
     Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -22,9 +21,6 @@ export const getAllRecipes = (limit: number, offset: number) =>
 
 export const getMyRecipes = () =>
   axios.get<RecipesResponse>(`${URL}/user`, config);
-
-export const getFavoriteRecipes = () =>
-  axios.get<RecipesResponse>(FAVORITE_URL, config);
 
 export const getRecipeById = (id: string) =>
   axios.get<Recipe>(`${URL}/${id}`, config);

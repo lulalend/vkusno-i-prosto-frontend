@@ -10,6 +10,18 @@ import { useUpdateRecipe } from '../../api/recipes/useUpdateRecipe.ts';
 import { useDeleteRecipe } from '../../api/recipes/useDeleteRecipe.ts';
 import { useRecipeById } from '../../api/recipes/useRecipeById.ts';
 import { LoadingPage } from '../loading/LoadingPage.tsx';
+// prettier-ignore
+import {
+  useIsFavoriteRecipe
+} from '../../api/recipes/favorites/useIsFavoriteRecipe.ts';
+// prettier-ignore
+import {
+  useAddFavoriteRecipe
+} from '../../api/recipes/favorites/useAddFavoriteRecipe.ts';
+// prettier-ignore
+import {
+  useDeleteFavoriteRecipe
+} from '../../api/recipes/favorites/useDeleteFavoriteRecipe.ts';
 
 export const RecipePage = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,12 +31,16 @@ export const RecipePage = () => {
   const [isFormActive, setIsFormActive] = useState(false);
   const navigate = useNavigate();
   const { data: recipe, isLoading } = useRecipeById({ id: id ?? '' });
+  const { data: isFavorite, isLoading: isLoadingFavorite } =
+    useIsFavoriteRecipe({ id: id ?? '' });
   const { mutate: updateRecipe } = useUpdateRecipe();
+  const { mutate: addFavoriteRecipe } = useAddFavoriteRecipe();
   const { mutate: deleteRecipe } = useDeleteRecipe();
+  const { mutate: deleteFavoriteRecipe } = useDeleteFavoriteRecipe();
 
   const username = getUsername(localStorage.getItem('token'));
 
-  if (isLoading) {
+  if (isLoading || isLoadingFavorite) {
     return <LoadingPage />;
   }
 
@@ -70,7 +86,17 @@ export const RecipePage = () => {
             <button onClick={handleDeleteRecipe}>Удалить рецепт</button>
           </>
         ) : (
-          <button>Сохранить</button>
+          <>
+            {isFavorite ? (
+              <button onClick={() => deleteFavoriteRecipe(recipe.id)}>
+                Убрать из сохранённого
+              </button>
+            ) : (
+              <button onClick={() => addFavoriteRecipe(recipe.id)}>
+                Сохранить
+              </button>
+            )}
+          </>
         )}
       </div>
       <h1 className={styles.title}>{recipe.name}</h1>

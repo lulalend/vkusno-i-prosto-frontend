@@ -16,7 +16,10 @@ import { useCreateRecipe } from '../../api/recipes/useCreateRecipe.ts';
 import { Modal } from '../../components/modal/Modal.tsx';
 import { RecipeForm } from '../../components/form/RecipeForm.tsx';
 import { useMyRecipes } from '../../api/recipes/useMyRecipes.ts';
-import { useFavoriteRecipes } from '../../api/recipes/useFavoriteRecipes.ts';
+// prettier-ignore
+import {
+  useFavoriteRecipes
+} from '../../api/recipes/favorites/useFavoriteRecipes.ts';
 import { LoadingPage } from '../loading/LoadingPage.tsx';
 
 export const ProfilePage = () => {
