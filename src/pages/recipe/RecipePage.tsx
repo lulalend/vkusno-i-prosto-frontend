@@ -58,9 +58,7 @@ export const RecipePage = () => {
       });
     }
   };
-
-  console.log(recipe.ownerUsername, username);
-
+  
   return (
     <div className={styles.container}>
       <div className={styles.buttons}>
