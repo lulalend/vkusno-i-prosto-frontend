@@ -30,9 +30,9 @@ export const RecipePage = () => {
   );
   const [isFormActive, setIsFormActive] = useState(false);
   const navigate = useNavigate();
-  const { data: recipe, isLoading } = useRecipeById({ id: id ?? '' });
+  const { data: recipe, isLoading } = useRecipeById(id ?? '');
   const { data: isFavorite, isLoading: isLoadingFavorite } =
-    useIsFavoriteRecipe({ id: id ?? '' });
+    useIsFavoriteRecipe(id ?? '');
   const { mutate: updateRecipe } = useUpdateRecipe();
   const { mutate: addFavoriteRecipe } = useAddFavoriteRecipe();
   const { mutate: deleteRecipe } = useDeleteRecipe();
