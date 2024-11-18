@@ -29,7 +29,7 @@ export const RecipePage = () => {
     ingredients: ['сосиска', 'картошка'],
     steps: ['Порезать', 'Подождать 5 минут'],
     videoLink: 'https://www.youtube.com',
-    showUsername: false,
+    showUsername: true,
     ownerUsername: 'ramazan',
   };
 
@@ -83,7 +83,9 @@ export const RecipePage = () => {
         )}
       </div>
       <h1 className={styles.title}>{recipe.name}</h1>
-      <p className={styles.owner}>Автор: {recipe.ownerUsername}</p>
+      {recipe.showUsername
+        && <p className={styles.owner}>Автор: {recipe.ownerUsername}</p>
+      }
 
       <div className={styles.content}>
         <div className={styles.leftColumn}>

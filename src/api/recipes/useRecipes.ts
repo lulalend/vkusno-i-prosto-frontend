@@ -1,19 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
 import { AxiosError } from 'axios';
 import { getAllRecipes } from './recipesApi.ts';
-import { Recipe } from '../../types/types.ts';
+import { RecipesResponse } from '../../types/types.ts';
 
-export const useRecipes = () => {
-  const { data, isLoading, isSuccess } = useQuery<Recipe[], AxiosError>({
-    queryKey: ['recipes'],
-    queryFn: () => getAllRecipes().then((response) => response.data),
+export const useRecipes = (limit: number, offset: number) => {
+  const { data, isLoading } = useQuery<RecipesResponse, AxiosError>({
+    queryKey: ['recipes', { limit, offset }],
+    queryFn: () => getAllRecipes(limit, offset)
+      .then((response) => response.data),
   });
 
-  // TODO: почистить
-  useEffect(() => {
-    if (isSuccess) console.log(data);
-  }, [isSuccess, data]);
+  const recipes = data?.recipes || [];
+  const total = data?.total || 0;
 
-  return { data, isLoading };
+  return { recipes, total, isLoading };
 };

@@ -27,7 +27,9 @@ export const RecipeCard = ({ recipe }: Props) => {
       <div className={styles.recipeDetails}>
         <div className={styles.recipeDescription}>
           <p className={styles.name}>{recipe.name}</p>
-          <p className={styles.username}>{recipe.ownerUsername}</p>
+          {recipe.showUsername
+            && <p className={styles.username}>{recipe.ownerUsername}</p>
+          }
         </div>
       </div>
     </div>

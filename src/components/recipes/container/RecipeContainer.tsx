@@ -8,8 +8,11 @@ type Props = {
 
 export const RecipeContainer = ({ recipes }: Props) => (
   <div className={styles.recipeContainer}>
-    {recipes &&
-      recipes.length > 0 &&
-      recipes.map((recipe) => <RecipeCard key={recipe.id} recipe={recipe} />)}
+    {
+      recipes
+      && recipes.length > 0
+      &&
+      recipes.map((recipe) => <RecipeCard key={recipe.id} recipe={recipe} />)
+    }
   </div>
 );

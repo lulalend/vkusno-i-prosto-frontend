@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import Filter from '../../assets/svg/filter.svg';
 import FocusFilter from '../../assets/svg/focusFilter.svg';
@@ -11,33 +11,65 @@ import DisabledRightArrow from '../../assets/svg/disabledRightArrow.svg';
 import {
   RecipeContainer
 } from '../../components/recipes/container/RecipeContainer.tsx';
-import { recipes } from '../../constants/recipes.ts';
+import { useRecipes } from '../../api/recipes/useRecipes.ts';
+import { LoadingPage } from '../loading/LoadingPage.tsx';
 
 export const MainPage = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const recipesPerPage = 8;
-  const totalPages = Math.ceil(recipes.length / recipesPerPage);
+  const [recipesPerPage, setRecipesPerPage] = useState(8);
+  const recipesRef = useRef<HTMLDivElement | null>(null);
+
+  const limit = recipesPerPage;
+  const offset = (currentPage - 1) * recipesPerPage;
+
+  const { recipes, total, isLoading } = useRecipes(limit, offset);
+
+  const calculateRecipesPerPage = (containerWidth: number) => {
+    const recipeWidth = 220;
+
+    return Math.floor(containerWidth / recipeWidth) * 2;
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (recipesRef.current) {
+        const containerWidth = recipesRef.current.offsetWidth;
+
+        setRecipesPerPage(calculateRecipesPerPage(containerWidth));
+      }
+    };
+
+    const observer = new ResizeObserver(() => handleResize());
+
+    if (recipesRef.current) {
+      observer.observe(recipesRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   const handlerFilterClick = () => {
-    setShowFilters((showFilters) => !showFilters);
+    setShowFilters((filters) => !filters);
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+      setCurrentPage((page) => page - 1);
     }
   };
+
+  const totalPages = Math.ceil((total || 1 ) / recipesPerPage);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
+      setCurrentPage((page) => page + 1);
     }
   };
-
-  const indexOfLastRecipe = currentPage * recipesPerPage;
-  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-  const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
   return (
     <div className={styles.container}>
@@ -61,25 +93,31 @@ export const MainPage = () => {
           <input placeholder="Не содержит ингредиенты..." />
         </div>
       )}
-      <div className={styles.recipes}>
-        <RecipeContainer recipes={currentRecipes} />
-        <div className={styles.pagination}>
-          <img
-            src={currentPage === 1 ? DisabledLeftArrow : LeftArrow}
-            onClick={handlePrevPage}
-            aria-disabled={currentPage === 1}
-            alt="Left arrow"
-          />
-          <span>
-            Страница {currentPage} из {totalPages}
-          </span>
-          <img
-            src={currentPage === totalPages ? DisabledRightArrow : RightArrow}
-            onClick={handleNextPage}
-            aria-disabled={currentPage === totalPages}
-            alt="Right arrow"
-          />
-        </div>
+      <div className={styles.recipes} ref={recipesRef}>
+        {recipes.length > 0 ? (<>
+          <RecipeContainer recipes={recipes} />
+          <div className={styles.pagination}>
+            <img
+              src={currentPage === 1 ? DisabledLeftArrow : LeftArrow}
+              onClick={handlePrevPage}
+              aria-disabled={currentPage === 1}
+              alt="Left arrow"
+            />
+            <span>
+              Страница {currentPage} из {totalPages}
+            </span>
+            <img
+              src={currentPage === totalPages ? DisabledRightArrow : RightArrow}
+              onClick={handleNextPage}
+              aria-disabled={currentPage === totalPages}
+              alt="Right arrow"
+            />
+          </div>
+        </>) : (
+          <p className={styles.message}>
+            Пока рецептов нет, может добавим в личном кабинете? :)
+          </p>
+        )}
       </div>
     </div>
   );
