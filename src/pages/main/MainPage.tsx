@@ -63,7 +63,7 @@ export const MainPage = () => {
     }
   };
 
-  const totalPages = Math.ceil((total || 1 ) / recipesPerPage);
+  const totalPages = Math.ceil((total || 1) / recipesPerPage);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -94,26 +94,30 @@ export const MainPage = () => {
         </div>
       )}
       <div className={styles.recipes} ref={recipesRef}>
-        {recipes.length > 0 ? (<>
-          <RecipeContainer recipes={recipes} />
-          <div className={styles.pagination}>
-            <img
-              src={currentPage === 1 ? DisabledLeftArrow : LeftArrow}
-              onClick={handlePrevPage}
-              aria-disabled={currentPage === 1}
-              alt="Left arrow"
-            />
-            <span>
-              Страница {currentPage} из {totalPages}
-            </span>
-            <img
-              src={currentPage === totalPages ? DisabledRightArrow : RightArrow}
-              onClick={handleNextPage}
-              aria-disabled={currentPage === totalPages}
-              alt="Right arrow"
-            />
-          </div>
-        </>) : (
+        {recipes.length > 0 ? (
+          <>
+            <RecipeContainer recipes={recipes} />
+            <div className={styles.pagination}>
+              <img
+                src={currentPage === 1 ? DisabledLeftArrow : LeftArrow}
+                onClick={handlePrevPage}
+                aria-disabled={currentPage === 1}
+                alt="Left arrow"
+              />
+              <span>
+                Страница {currentPage} из {totalPages}
+              </span>
+              <img
+                src={
+                  currentPage === totalPages ? DisabledRightArrow : RightArrow
+                }
+                onClick={handleNextPage}
+                aria-disabled={currentPage === totalPages}
+                alt="Right arrow"
+              />
+            </div>
+          </>
+        ) : (
           <p className={styles.message}>
             Пока рецептов нет, может добавим в личном кабинете? :)
           </p>

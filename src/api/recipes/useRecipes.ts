@@ -6,8 +6,8 @@ import { RecipesResponse } from '../../types/types.ts';
 export const useRecipes = (limit: number, offset: number) => {
   const { data, isLoading } = useQuery<RecipesResponse, AxiosError>({
     queryKey: ['recipes', { limit, offset }],
-    queryFn: () => getAllRecipes(limit, offset)
-      .then((response) => response.data),
+    queryFn: () =>
+      getAllRecipes(limit, offset).then((response) => response.data),
   });
 
   const recipes = data?.recipes || [];

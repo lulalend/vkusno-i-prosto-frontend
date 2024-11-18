@@ -3,7 +3,7 @@ import type {
   Recipe,
   RecipeForCreate,
   RecipeForUpdate,
-  RecipesResponse
+  RecipesResponse,
 } from '../../types/types.ts';
 
 const URL: string = 'http://147.45.165.69:8080/v1/recipes';

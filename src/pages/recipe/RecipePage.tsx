@@ -83,9 +83,9 @@ export const RecipePage = () => {
         )}
       </div>
       <h1 className={styles.title}>{recipe.name}</h1>
-      {recipe.showUsername
-        && <p className={styles.owner}>Автор: {recipe.ownerUsername}</p>
-      }
+      {recipe.showUsername && (
+        <p className={styles.owner}>Автор: {recipe.ownerUsername}</p>
+      )}
 
       <div className={styles.content}>
         <div className={styles.leftColumn}>
