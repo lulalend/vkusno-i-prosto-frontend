@@ -13,5 +13,7 @@ export const getUsername = (token: string | null): string => {
   const payload = token.split('.')[1];
   const decodedPayload = JSON.parse(atob(payload));
 
+  console.log(decodedPayload);
+
   return decodedPayload.username || '-';
 };
