@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
 import Filter from '../../assets/svg/filter.svg';
 import FocusFilter from '../../assets/svg/focusFilter.svg';
@@ -15,6 +15,9 @@ import { useRecipes } from '../../api/recipes/useRecipes.ts';
 import { LoadingPage } from '../loading/LoadingPage.tsx';
 
 export const MainPage = () => {
+  const [searchName, setSearchName] = useState('');
+  const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
+  const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage, setRecipesPerPage] = useState(8);
@@ -23,7 +26,13 @@ export const MainPage = () => {
   const limit = recipesPerPage;
   const offset = (currentPage - 1) * recipesPerPage;
 
-  const { recipes, total, isLoading } = useRecipes(limit, offset);
+  const { recipes, total, isLoading } = useRecipes(
+    limit,
+    offset,
+    searchName,
+    includeIngredients,
+    excludeIngredients,
+  );
 
   const calculateRecipesPerPage = (containerWidth: number) => {
     const isMobile = window.innerWidth < 768;
@@ -72,12 +81,38 @@ export const MainPage = () => {
     }
   };
 
+  const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setSearchName((e.target as HTMLInputElement).value);
+    }
+  };
+
+  // prettier-ignore
+  const handleFilterKeyDown =
+    (filterType: 'include' | 'exclude') =>
+      (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+          const value = (e.target as HTMLInputElement).value;
+
+          if (!value.trim()) return;
+
+          if (filterType === 'include') {
+            setIncludeIngredients((prev) => [...prev, value.trim()]);
+          } else if (filterType === 'exclude') {
+            setExcludeIngredients((prev) => [...prev, value.trim()]);
+          }
+
+          (e.target as HTMLInputElement).value = '';
+        }
+      };
+
   return (
     <div className={styles.container}>
       <div className={styles.search}>
         <input
           style={{ backgroundImage: `url(${Search})` }}
           placeholder="Ищем рецепты..."
+          onKeyDown={handleSearchKeyDown}
         />
         <div className={styles.filter} onClick={handlerFilterClick}>
           {!showFilters ? (
@@ -90,8 +125,14 @@ export const MainPage = () => {
       </div>
       {showFilters && (
         <div className={styles.filters}>
-          <input placeholder="Содержит ингредиенты..." />
-          <input placeholder="Не содержит ингредиенты..." />
+          <input
+            placeholder="Содержит ингредиенты..."
+            onKeyDown={handleFilterKeyDown('include')}
+          />
+          <input
+            placeholder="Не содержит ингредиенты..."
+            onKeyDown={handleFilterKeyDown('exclude')}
+          />
         </div>
       )}
       <div className={styles.recipes} ref={recipesRef}>

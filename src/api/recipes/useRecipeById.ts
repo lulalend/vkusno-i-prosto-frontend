@@ -3,11 +3,7 @@ import { AxiosError } from 'axios';
 import { getRecipeById } from './recipesApi.ts';
 import { Recipe } from '../../types/types.ts';
 
-type Props = {
-  id: string;
-};
-
-export const useRecipeById = ({ id }: Props) => {
+export const useRecipeById = (id: string) => {
   const { data, isLoading } = useQuery<Recipe, AxiosError>({
     queryKey: ['recipe', { id }],
     queryFn: () => getRecipeById(id).then((response) => response.data),

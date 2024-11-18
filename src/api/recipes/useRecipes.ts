@@ -3,11 +3,26 @@ import { AxiosError } from 'axios';
 import { getAllRecipes } from './recipesApi.ts';
 import { RecipesResponse } from '../../types/types.ts';
 
-export const useRecipes = (limit: number, offset: number) => {
+export const useRecipes = (
+  limit: number,
+  offset: number,
+  name: string,
+  includeIngredients: string[],
+  excludeIngredients: string[],
+) => {
   const { data, isLoading } = useQuery<RecipesResponse, AxiosError>({
-    queryKey: ['recipes', { limit, offset }],
+    queryKey: [
+      'recipes',
+      { limit, offset, name, includeIngredients, excludeIngredients },
+    ],
     queryFn: () =>
-      getAllRecipes(limit, offset).then((response) => response.data),
+      getAllRecipes(
+        limit,
+        offset,
+        name,
+        includeIngredients,
+        excludeIngredients,
+      ).then((response) => response.data),
   });
 
   const recipes = data?.recipes || [];

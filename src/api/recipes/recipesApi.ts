@@ -14,9 +14,15 @@ const config = {
   },
 };
 
-export const getAllRecipes = (limit: number, offset: number) =>
+export const getAllRecipes = (
+  limit: number,
+  offset: number,
+  name: string,
+  includeIngredients: string[],
+  excludeIngredients: string[],
+) =>
   axios.get<RecipesResponse>(URL, {
-    params: { limit, offset },
+    params: { limit, offset, name, includeIngredients, excludeIngredients },
   });
 
 export const getMyRecipes = () =>

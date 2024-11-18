@@ -2,12 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { isFavoriteRecipe } from './favoriteRecipesApi.ts';
 
-type Props = {
-  id: string;
-};
-
-export const useIsFavoriteRecipe = ({ id }: Props) => {
-  const token = localStorage.getItem('token'); // Проверяем наличие токена
+export const useIsFavoriteRecipe = (id: string) => {
+  const token = localStorage.getItem('token');
   const shouldFetch = Boolean(token);
 
   const { data, isLoading } = useQuery<boolean, AxiosError>({
