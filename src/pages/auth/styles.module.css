@@ -27,9 +27,14 @@ h2 {
 }
 
 .slideUp h2 {
-  font-size: 1.3em;
+  align-self: center;
+  font-size: 1.4em;
   font-weight: 500;
   cursor: pointer;
+}
+
+.slideUp h2:hover {
+  font-size: 1.8em;
 }
 
 .inputs {

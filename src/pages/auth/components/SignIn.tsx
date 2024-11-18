@@ -48,7 +48,14 @@ export const SignIn = ({ onClose }: Props) => {
           type="text"
           placeholder="Логин"
           value={login}
-          onChange={(e) => setLogin(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            const regex = /^[a-zA-Z0-9]*$/;
+
+            if (regex.test(value)) {
+              setLogin(value);
+            }
+          }}
           required
         />
         <input

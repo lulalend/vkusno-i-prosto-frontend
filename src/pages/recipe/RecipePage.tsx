@@ -58,7 +58,7 @@ export const RecipePage = () => {
       });
     }
   };
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.buttons}>
