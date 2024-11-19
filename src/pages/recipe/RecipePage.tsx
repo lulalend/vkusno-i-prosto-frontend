@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import styles from './styles.module.css';
 import DefaultRecipe from '../../assets/img/defaultRecipe.png';
 import { getUsername } from '../../api/user/token.ts';
@@ -39,7 +39,8 @@ export const RecipePage = () => {
   const { mutate: deleteRecipe } = useDeleteRecipe();
   const { mutate: deleteFavoriteRecipe } = useDeleteFavoriteRecipe();
 
-  const username = getUsername(localStorage.getItem('token'));
+  const token = localStorage.getItem('token');
+  const username = useMemo(() => getUsername(token), [token]);
 
   if (isLoading || isLoadingFavorite) {
     return <LoadingPage />;
