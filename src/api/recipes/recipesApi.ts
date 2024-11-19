@@ -11,17 +11,19 @@ export const getAllRecipes = (
   limit: number,
   offset: number,
   name: string,
-  includeIngredient: string,
-  excludeIngredient: string,
+  includeIngredients: string,
+  excludeIngredients: string,
 ) =>
   axios.get<RecipesResponse>(URL, {
-    params: { limit, offset, name, includeIngredient, excludeIngredient },
+    timeout: 2000,
+    params: { limit, offset, name, includeIngredients, excludeIngredients },
   });
 
 export const getMyRecipes = () =>
   axios.get<RecipesResponse>(`${URL}/user`, getConfig());
 
-export const getRecipeById = (id: string) => axios.get<Recipe>(`${URL}/${id}`);
+export const getRecipeById = (id: string) =>
+  axios.get<Recipe>(`${URL}/${id}`, { timeout: 2000 });
 
 export const createRecipe = (recipe: RecipeForCreate) =>
   axios.post(URL, recipe, getConfig());

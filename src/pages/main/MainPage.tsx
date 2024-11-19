@@ -12,9 +12,15 @@ import { useRecipes } from '../../api/recipes/useRecipes.ts';
 import { LoadingPage } from '../loading/LoadingPage.tsx';
 
 export const MainPage = () => {
-  const [searchName, setSearchName] = useState('');
-  const [includeIngredient, setIncludeIngredient] = useState<string>('');
-  const [excludeIngredient, setExcludeIngredient] = useState<string>('');
+  const [searchName, setSearchName] = useState(
+    localStorage.getItem('searchName') || '',
+  );
+  const [includeIngredient, setIncludeIngredient] = useState(
+    localStorage.getItem('includeIngredient') || '',
+  );
+  const [excludeIngredient, setExcludeIngredient] = useState(
+    localStorage.getItem('excludeIngredient') || '',
+  );
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage, setRecipesPerPage] = useState(8);
@@ -80,7 +86,12 @@ export const MainPage = () => {
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      setSearchName((e.target as HTMLInputElement).value);
+      const value = (e.target as HTMLInputElement).value.trim();
+
+      if (value) {
+        setSearchName(value);
+        localStorage.setItem('searchName', value);
+      }
     }
   };
 
@@ -89,19 +100,26 @@ export const MainPage = () => {
     (filterType: 'include' | 'exclude') =>
       (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-          const value = (e.target as HTMLInputElement).value;
+          const value = (e.target as HTMLInputElement).value.trim();
 
-          if (!value.trim()) return;
+          if (!value) return;
 
           if (filterType === 'include') {
-            setIncludeIngredient(value.trim());
+            setIncludeIngredient(value);
+            localStorage.setItem('includeIngredient', value);
           } else if (filterType === 'exclude') {
-            setExcludeIngredient(value.trim());
+            setExcludeIngredient(value);
+            localStorage.setItem('excludeIngredient', value);
           }
-
-          (e.target as HTMLInputElement).value = '';
         }
       };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    setSearchName(value);
+    localStorage.setItem('searchName', value);
+  };
 
   return (
     <div className={styles.container}>
@@ -110,6 +128,9 @@ export const MainPage = () => {
           style={{ backgroundImage: `url(${Search})` }}
           placeholder="Ищем рецепты..."
           onKeyDown={handleSearchKeyDown}
+          value={searchName}
+          onChange={handleSearchChange}
+          autoFocus={true}
         />
         <div className={styles.filter} onClick={handlerFilterClick}>
           {!showFilters ? (
@@ -124,10 +145,18 @@ export const MainPage = () => {
         <div className={styles.filters}>
           <input
             placeholder="Содержит ингредиенты..."
+            value={includeIngredient}
+            onChange={(e) => {
+              setIncludeIngredient(e.target.value);
+            }}
             onKeyDown={handleFilterKeyDown('include')}
           />
           <input
             placeholder="Не содержит ингредиенты..."
+            value={excludeIngredient}
+            onChange={(e) => {
+              setExcludeIngredient(e.target.value);
+            }}
             onKeyDown={handleFilterKeyDown('exclude')}
           />
         </div>
@@ -158,7 +187,7 @@ export const MainPage = () => {
           </>
         ) : (
           <p className={styles.message}>
-            Пока рецептов нет, может добавим в личном кабинете? :)
+            Рецептов нет, может добавим в личном кабинете? :)
           </p>
         )}
       </div>

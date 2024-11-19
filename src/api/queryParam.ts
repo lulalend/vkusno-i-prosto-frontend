@@ -1,4 +1,4 @@
-const host = 'http://51.250.98.4:8080/v1';
+const host = 'http://147.45.165.69:8080/v1';
 
 export const URL: string = `${host}/recipes`;
 export const FAVORITE_URL: string = `${host}/favorites`;
@@ -7,6 +7,7 @@ export const USERS_URL: string = `${host}/users`;
 
 export const getConfig = () => {
   return {
+    timeout: 2000,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json',
@@ -18,9 +19,12 @@ export const recipesQueryKey = (
   limit: number,
   offset: number,
   name: string,
-  includeIngredient: string,
-  excludeIngredient: string,
-) => ['recipes', { limit, offset, name, includeIngredient, excludeIngredient }];
+  includeIngredients: string,
+  excludeIngredients: string,
+) => [
+  'recipes',
+  { limit, offset, name, includeIngredients, excludeIngredients },
+];
 export const recipeCreateQueryKey = ['create recipe'];
 export const recipeDeleteQueryKey = ['delete recipe'];
 export const recipeUpdateQueryKey = ['update recipe'];

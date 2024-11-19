@@ -8,24 +8,24 @@ export const useRecipes = (
   limit: number,
   offset: number,
   name: string,
-  includeIngredient: string,
-  excludeIngredient: string,
+  includeIngredients: string,
+  excludeIngredients: string,
 ) => {
   const { data, isLoading } = useQuery<RecipesResponse, AxiosError>({
     queryKey: recipesQueryKey(
       limit,
       offset,
       name,
-      includeIngredient,
-      excludeIngredient,
+      includeIngredients,
+      excludeIngredients,
     ),
     queryFn: () =>
       getAllRecipes(
         limit,
         offset,
         name,
-        includeIngredient,
-        excludeIngredient,
+        includeIngredients,
+        excludeIngredients,
       ).then((response) => response.data),
   });
 
