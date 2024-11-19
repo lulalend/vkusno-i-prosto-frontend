@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import styles from './styles.module.css';
-// import { useRecipeById } from '../../api/recipes/useRecipeById.ts';
 import DefaultRecipe from '../../assets/img/defaultRecipe.png';
 import { getUsername } from '../../api/user/token.ts';
 import { RecipeForUpdate } from '../../types/types.ts';
@@ -9,6 +8,20 @@ import { RecipeForm } from '../../components/form/RecipeForm.tsx';
 import { Modal } from '../../components/modal/Modal.tsx';
 import { useUpdateRecipe } from '../../api/recipes/useUpdateRecipe.ts';
 import { useDeleteRecipe } from '../../api/recipes/useDeleteRecipe.ts';
+import { useRecipeById } from '../../api/recipes/useRecipeById.ts';
+import { LoadingPage } from '../loading/LoadingPage.tsx';
+// prettier-ignore
+import {
+  useIsFavoriteRecipe
+} from '../../api/recipes/favorites/useIsFavoriteRecipe.ts';
+// prettier-ignore
+import {
+  useAddFavoriteRecipe
+} from '../../api/recipes/favorites/useAddFavoriteRecipe.ts';
+// prettier-ignore
+import {
+  useDeleteFavoriteRecipe
+} from '../../api/recipes/favorites/useDeleteFavoriteRecipe.ts';
 
 export const RecipePage = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,25 +30,19 @@ export const RecipePage = () => {
   );
   const [isFormActive, setIsFormActive] = useState(false);
   const navigate = useNavigate();
-  // const { data: recipe, isLoading } = useRecipeById({ id: id ?? '' });
+  const { data: recipe, isLoading } = useRecipeById(id ?? '');
+  const { data: isFavorite, isLoading: isLoadingFavorite } =
+    useIsFavoriteRecipe(id ?? '');
   const { mutate: updateRecipe } = useUpdateRecipe();
+  const { mutate: addFavoriteRecipe } = useAddFavoriteRecipe();
   const { mutate: deleteRecipe } = useDeleteRecipe();
+  const { mutate: deleteFavoriteRecipe } = useDeleteFavoriteRecipe();
 
   const username = getUsername(localStorage.getItem('token'));
-  const recipe = {
-    id: '1',
-    name: 'Завтрак',
-    image: '',
-    ingredients: ['сосиска', 'картошка'],
-    steps: ['Порезать', 'Подождать 5 минут'],
-    videoLink: 'https://www.youtube.com',
-    showUsername: false,
-    ownerUsername: 'ramazan',
-  };
 
-  // if (isLoading) {
-  //   return <div>Загрузка рецепта...</div>;
-  // }
+  if (isLoading || isLoadingFavorite) {
+    return <LoadingPage />;
+  }
 
   if (!recipe) {
     return <div>Рецепт не найден. Пожалуйста, вернитесь назад.</div>;
@@ -71,7 +78,7 @@ export const RecipePage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.buttons}>
-        {recipe.ownerUsername !== username ? (
+        {recipe.ownerUsername === username ? (
           <>
             <button onClick={() => setIsFormActive(true)}>
               Изменить рецепт
@@ -79,11 +86,23 @@ export const RecipePage = () => {
             <button onClick={handleDeleteRecipe}>Удалить рецепт</button>
           </>
         ) : (
-          <button>Сохранить</button>
+          <>
+            {isFavorite ? (
+              <button onClick={() => deleteFavoriteRecipe(recipe.id)}>
+                Убрать из сохранённого
+              </button>
+            ) : (
+              <button onClick={() => addFavoriteRecipe(recipe.id)}>
+                Сохранить
+              </button>
+            )}
+          </>
         )}
       </div>
       <h1 className={styles.title}>{recipe.name}</h1>
-      <p className={styles.owner}>Автор: {recipe.ownerUsername}</p>
+      {recipe.ownerUsername && (
+        <p className={styles.owner}>Автор: {recipe.ownerUsername}</p>
+      )}
 
       <div className={styles.content}>
         <div className={styles.leftColumn}>

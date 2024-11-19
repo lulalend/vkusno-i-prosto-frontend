@@ -7,11 +7,19 @@ export type Recipe = {
   videoLink: string;
   showUsername: boolean;
   ownerUsername: string;
+  tags: string[];
 };
 
 export type RecipeForUpdate = Omit<Recipe, 'ownerUsername'>;
 
 export type RecipeForCreate = Omit<Recipe, 'id' | 'ownerUsername'>;
+
+export type RecipesResponse = {
+  recipes: Recipe[];
+  offset: number;
+  limit: number;
+  total: number;
+};
 
 export type SignInResponse = {
   token: string;

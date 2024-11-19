@@ -1,18 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
-import { createRecipe } from './recipesApi.ts';
-import { RecipeForCreate } from '../../types/types.ts';
+import { addFavoriteRecipe } from './favoriteRecipesApi.ts';
 
-export const useCreateRecipe = () => {
+export const useAddFavoriteRecipe = () => {
   const queryClient = useQueryClient();
 
   const { mutate, isPending } = useMutation({
-    mutationKey: ['create recipe'],
-    mutationFn: (recipe: RecipeForCreate) => createRecipe(recipe),
+    mutationKey: ['add favorite recipe'],
+    mutationFn: (id: string) => addFavoriteRecipe(id),
     onSuccess: () => {
       toast.success('Спасибо за рецепт :)');
       queryClient.invalidateQueries({
-        queryKey: ['recipes', 'my recipes'],
+        queryKey: ['favorite recipes'],
       });
     },
   });

@@ -4,7 +4,7 @@
 
   padding: 0.7em 1em 1.3em;
   width: fit-content;
-  height: fit-content;
+  height: 255px;
 
   border-radius: 25px;
   background-color: var(--color-primary-light);
@@ -42,6 +42,13 @@
   gap: 0.3em;
 }
 
+.name,
+.username {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .recipeCard .name {
   font-weight: 500;
   font-size: 1.2em;
@@ -53,4 +60,28 @@
 
 .recipeCard .editIcon {
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .recipeCard {
+    width: 150px;
+    height: auto;
+    padding: 0.5em 1em;
+  }
+
+  .recipeIcon {
+    width: 100%;
+    height: auto;
+  }
+
+  .recipeDetails {
+    width: 100%;
+  }
+
+  .name,
+  .username {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

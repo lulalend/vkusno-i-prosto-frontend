@@ -11,18 +11,27 @@ import FocusSavedRecipes from '../../assets/svg/whiteHeart.svg';
 import {
   RecipeContainer
 } from '../../components/recipes/container/RecipeContainer.tsx';
-import { recipes } from '../../constants/recipes.ts';
 import { RecipeForCreate } from '../../types/types.ts';
 import { useCreateRecipe } from '../../api/recipes/useCreateRecipe.ts';
 import { Modal } from '../../components/modal/Modal.tsx';
 import { RecipeForm } from '../../components/form/RecipeForm.tsx';
+import { useMyRecipes } from '../../api/recipes/useMyRecipes.ts';
+// prettier-ignore
+import {
+  useFavoriteRecipes
+} from '../../api/recipes/favorites/useFavoriteRecipes.ts';
+import { LoadingPage } from '../loading/LoadingPage.tsx';
 
 export const ProfilePage = () => {
   const { login } = useParams<{ login: string }>();
   const navigate = useNavigate();
-  const [isSavedActive, setIsSavedActive] = useState(false);
+  const [isFavoriteActive, setIsFavoriteActive] = useState(false);
   const [isFormActive, setIsFormActive] = useState(false);
   const { mutate: createRecipe } = useCreateRecipe();
+
+  const { myRecipes, isLoading: isMyRecipesLoading } = useMyRecipes();
+  const { favoriteRecipes, isLoading: isFavoriteRecipesLoading } =
+    useFavoriteRecipes();
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -31,8 +40,20 @@ export const ProfilePage = () => {
 
   const handleCreateRecipe = (newRecipe: RecipeForCreate) => {
     createRecipe(newRecipe);
-    setIsFormActive(true);
+    setIsFormActive(false);
   };
+
+  const recipes = isFavoriteActive ? favoriteRecipes : myRecipes;
+  const isLoading = isFavoriteActive
+    ? isFavoriteRecipesLoading
+    : isMyRecipesLoading;
+  const emptyMessage = isFavoriteActive
+    ? 'Вы пока ничего не сохранили :('
+    : 'Вы пока не создали рецепта, может пора начать? ;)';
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
 
   return (
     <div className={styles.profilePage}>
@@ -47,11 +68,11 @@ export const ProfilePage = () => {
         <div className={styles.userSections}>
           <div
             className={classNames({
-              [styles.activeSection]: !isSavedActive,
+              [styles.activeSection]: !isFavoriteActive,
             })}
-            onClick={() => setIsSavedActive(false)}
+            onClick={() => setIsFavoriteActive(false)}
           >
-            {isSavedActive ? (
+            {isFavoriteActive ? (
               <img src={MyRecipes} alt="List icon" />
             ) : (
               <img src={FocusMyRecipes} alt="List icon" />
@@ -60,11 +81,11 @@ export const ProfilePage = () => {
           </div>
           <div
             className={classNames({
-              [styles.activeSection]: isSavedActive,
+              [styles.activeSection]: isFavoriteActive,
             })}
-            onClick={() => setIsSavedActive(true)}
+            onClick={() => setIsFavoriteActive(true)}
           >
-            {isSavedActive ? (
+            {isFavoriteActive ? (
               <img src={FocusSavedRecipes} alt="Heart icon" />
             ) : (
               <img src={SavedRecipes} alt="Heart icon" />
@@ -77,8 +98,12 @@ export const ProfilePage = () => {
         </button>
       </div>
       <div className={styles.container}>
-        <button>Добавить рецепт</button>
-        <RecipeContainer recipes={recipes} />
+        <button onClick={() => setIsFormActive(true)}>Добавить рецепт</button>
+        {!recipes || recipes.length === 0 ? (
+          <p className={styles.message}>{emptyMessage}</p>
+        ) : (
+          <RecipeContainer recipes={recipes} />
+        )}
       </div>
 
       <Modal isActive={isFormActive} onClose={() => setIsFormActive(false)}>

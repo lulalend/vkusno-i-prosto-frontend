@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: calc(100vh - 5em);
+  min-height: calc(100vh - 5.4em);
   background-color: var(--color-primary);
 }
 
@@ -113,4 +113,26 @@ span.index {
 .crossed {
   text-decoration: line-through;
   color: var(--gray-opacity-60);
+}
+
+@media (max-width: 768px) {
+  .container {
+    min-height: calc(100vh - 5em);
+  }
+
+  .buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 2em;
+  }
+
+  .content {
+    display: flex;
+    margin-top: 1.5em;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 }

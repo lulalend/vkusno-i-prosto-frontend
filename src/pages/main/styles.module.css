@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  min-height: calc(100vh - 5em);
+  min-height: calc(100vh - 5.4em);
   padding: 0 15rem;
 
   background-color: var(--color-primary);
@@ -136,4 +136,70 @@
 
 .pagination img[aria-disabled='true'] {
   cursor: not-allowed;
+}
+
+.message {
+  margin-top: 15%;
+  font-size: 2em;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.01rem;
+    align-items: center;
+  }
+
+  .search {
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1.5em;
+  }
+
+  .search input {
+    width: 90%;
+    padding: 15px 15px 15px 45px;
+    font-size: 1em;
+    background-repeat: no-repeat;
+    background-position: 17px center;
+    background-size: 25px;
+  }
+
+  .filter {
+    gap: 5px;
+  }
+
+  .filter span {
+    font-size: 1em;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    margin-top: 1.5em;
+  }
+
+  .filters input {
+    width: 80%;
+    padding: 15px 15px 15px 40px;
+    font-size: 0.9em;
+    background-repeat: no-repeat;
+    background-position: 17px center;
+    background-size: 20px;
+  }
+
+  .recipes {
+    margin: 2em 0 3em;
+  }
+
+  .pagination {
+    flex-direction: row;
+    gap: 0.5em;
+    height: auto;
+    width: 100%;
+  }
+
+  .pagination span {
+    font-size: 1em;
+  }
 }
