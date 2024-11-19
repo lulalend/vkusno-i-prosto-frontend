@@ -167,9 +167,11 @@ export const RecipePage = () => {
         </div>
       </div>
 
-      <Modal isActive={isFormActive} onClose={() => setIsFormActive(false)}>
-        <RecipeForm initialRecipe={recipe} onSubmit={handleUpdateRecipe} />
-      </Modal>
+      {token && (
+        <Modal isActive={isFormActive} onClose={() => setIsFormActive(false)}>
+          <RecipeForm initialRecipe={recipe} onSubmit={handleUpdateRecipe} />
+        </Modal>
+      )}
     </div>
   );
 };
