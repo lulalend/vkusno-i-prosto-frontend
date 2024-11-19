@@ -7,21 +7,21 @@ export const useRecipes = (
   limit: number,
   offset: number,
   name: string,
-  includeIngredients: string[],
-  excludeIngredients: string[],
+  includeIngredient: string,
+  excludeIngredient: string,
 ) => {
   const { data, isLoading } = useQuery<RecipesResponse, AxiosError>({
     queryKey: [
       'recipes',
-      { limit, offset, name, includeIngredients, excludeIngredients },
+      { limit, offset, name, includeIngredient, excludeIngredient },
     ],
     queryFn: () =>
       getAllRecipes(
         limit,
         offset,
-        name,
-        includeIngredients,
-        excludeIngredients,
+        // name,
+        // includeIngredient,
+        // excludeIngredient,
       ).then((response) => response.data),
   });
 

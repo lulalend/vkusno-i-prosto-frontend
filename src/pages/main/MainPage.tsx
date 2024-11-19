@@ -16,8 +16,8 @@ import { LoadingPage } from '../loading/LoadingPage.tsx';
 
 export const MainPage = () => {
   const [searchName, setSearchName] = useState('');
-  const [includeIngredients, setIncludeIngredients] = useState<string[]>([]);
-  const [excludeIngredients, setExcludeIngredients] = useState<string[]>([]);
+  const [includeIngredient, setIncludeIngredient] = useState<string>('');
+  const [excludeIngredient, setExcludeIngredient] = useState<string>('');
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage, setRecipesPerPage] = useState(8);
@@ -30,8 +30,8 @@ export const MainPage = () => {
     limit,
     offset,
     searchName,
-    includeIngredients,
-    excludeIngredients,
+    includeIngredient,
+    excludeIngredient,
   );
 
   const calculateRecipesPerPage = (containerWidth: number) => {
@@ -97,9 +97,9 @@ export const MainPage = () => {
           if (!value.trim()) return;
 
           if (filterType === 'include') {
-            setIncludeIngredients((prev) => [...prev, value.trim()]);
+            setIncludeIngredient(value.trim());
           } else if (filterType === 'exclude') {
-            setExcludeIngredients((prev) => [...prev, value.trim()]);
+            setExcludeIngredient(value.trim());
           }
 
           (e.target as HTMLInputElement).value = '';
