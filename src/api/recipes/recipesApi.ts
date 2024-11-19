@@ -5,14 +5,7 @@ import type {
   RecipeForUpdate,
   RecipesResponse,
 } from '../../types/types.ts';
-
-const URL: string = 'http://147.45.165.69:8080/v1/recipes';
-const config = {
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
-    'Content-Type': 'application/json',
-  },
-};
+import { getConfig, URL } from '../queryParam.ts';
 
 export const getAllRecipes = (
   limit: number,
@@ -26,15 +19,15 @@ export const getAllRecipes = (
   });
 
 export const getMyRecipes = () =>
-  axios.get<RecipesResponse>(`${URL}/user`, config);
+  axios.get<RecipesResponse>(`${URL}/user`, getConfig());
 
-export const getRecipeById = (id: string) =>
-  axios.get<Recipe>(`${URL}/${id}`, config);
+export const getRecipeById = (id: string) => axios.get<Recipe>(`${URL}/${id}`);
 
 export const createRecipe = (recipe: RecipeForCreate) =>
-  axios.post(URL, recipe, config);
+  axios.post(URL, recipe, getConfig());
 
 export const updateRecipe = (recipe: RecipeForUpdate) =>
-  axios.put(URL, recipe, config);
+  axios.put(URL, recipe, getConfig());
 
-export const deleteRecipe = (id: string) => axios.put(`${URL}/${id}`, config);
+export const deleteRecipe = (id: string) =>
+  axios.put(`${URL}/${id}`, getConfig());

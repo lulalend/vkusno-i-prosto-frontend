@@ -3,21 +3,6 @@ import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 import { getErrorMessage, getInfoMessage } from './constants/userMessages.ts';
 
-export const recipeKeys = {
-  getAll: 'recipes',
-  getOne: 'recipe',
-  create: 'create recipe',
-  update: 'update recipe',
-  delete: 'delete recipe',
-  getCreated: 'created recipes',
-};
-
-export const favoriteRecipesKeys = {
-  getAll: 'favorite recipes',
-  add: 'add favorite recipe',
-  delete: 'delete favorite recipe',
-};
-
 const errorFunction = (error: Error) => {
   if (error instanceof AxiosError) {
     const statusCode = error.status;

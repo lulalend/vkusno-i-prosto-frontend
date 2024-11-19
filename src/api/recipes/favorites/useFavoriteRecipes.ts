@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { getFavoriteRecipes } from './favoriteRecipesApi.ts';
 import type { RecipesResponse } from '../../../types/types.ts';
-import { favoriteRecipesKeys } from '../../../queryClient.ts';
+import { favoriteRecipesKeys } from '../../queryParam.ts';
 
 export const useFavoriteRecipes = () => {
   const { data, isLoading } = useQuery<RecipesResponse, AxiosError>({

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { deleteRecipe } from './recipesApi.ts';
-import { recipeKeys } from '../../queryClient.ts';
+import { recipeKeys } from '../queryParam.ts';
 
 export const useDeleteRecipe = () => {
   const queryClient = useQueryClient();

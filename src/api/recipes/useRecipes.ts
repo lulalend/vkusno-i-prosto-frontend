@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { getAllRecipes } from './recipesApi.ts';
 import { RecipesResponse } from '../../types/types.ts';
-import { recipeKeys } from '../../queryClient.ts';
+import { recipeKeys } from '../queryParam.ts';
 
 export const useRecipes = (
   limit: number,

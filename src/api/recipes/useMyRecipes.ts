@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { getMyRecipes } from './recipesApi.ts';
 import type { RecipesResponse } from '../../types/types.ts';
-import { recipeKeys } from '../../queryClient.ts';
+import { recipeKeys } from '../queryParam.ts';
 
 export const useMyRecipes = () => {
   const { data, isLoading } = useQuery<RecipesResponse, AxiosError>({

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { addFavoriteRecipe } from './favoriteRecipesApi.ts';
-import { favoriteRecipesKeys } from '../../../queryClient.ts';
+import { favoriteRecipesKeys } from '../../queryParam.ts';
 
 export const useAddFavoriteRecipe = () => {
   const queryClient = useQueryClient();

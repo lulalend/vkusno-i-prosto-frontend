@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { isFavoriteRecipe } from './favoriteRecipesApi.ts';
-import { favoriteRecipesKeys } from '../../../queryClient.ts';
+import { favoriteRecipesKeys } from '../../queryParam.ts';
 
 export const useIsFavoriteRecipe = (id: string) => {
   const token = localStorage.getItem('token');

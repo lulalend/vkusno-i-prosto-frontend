@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { updateRecipe } from './recipesApi.ts';
 import { RecipeForUpdate } from '../../types/types.ts';
-import { recipeKeys } from '../../queryClient.ts';
+import { recipeKeys } from '../queryParam.ts';
 
 export const useUpdateRecipe = () => {
   const queryClient = useQueryClient();
