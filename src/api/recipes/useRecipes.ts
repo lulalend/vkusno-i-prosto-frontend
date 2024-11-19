@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { getAllRecipes } from './recipesApi.ts';
 import { RecipesResponse } from '../../types/types.ts';
+import { recipeKeys } from '../../queryClient.ts';
 
 export const useRecipes = (
   limit: number,
@@ -12,7 +13,7 @@ export const useRecipes = (
 ) => {
   const { data, isLoading } = useQuery<RecipesResponse, AxiosError>({
     queryKey: [
-      'recipes',
+      recipeKeys.getAll,
       { limit, offset, name, includeIngredient, excludeIngredient },
     ],
     queryFn: () =>

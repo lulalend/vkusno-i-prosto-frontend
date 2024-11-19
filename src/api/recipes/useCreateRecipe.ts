@@ -2,17 +2,18 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { createRecipe } from './recipesApi.ts';
 import { RecipeForCreate } from '../../types/types.ts';
+import { recipeKeys } from '../../queryClient.ts';
 
 export const useCreateRecipe = () => {
   const queryClient = useQueryClient();
 
   const { mutate, isPending } = useMutation({
-    mutationKey: ['create recipe'],
+    mutationKey: [recipeKeys.create],
     mutationFn: (recipe: RecipeForCreate) => createRecipe(recipe),
     onSuccess: () => {
       toast.success('Спасибо за рецепт :)');
       queryClient.invalidateQueries({
-        queryKey: ['recipes', 'my recipes'],
+        queryKey: [recipeKeys.getAll, recipeKeys.getCreated],
       });
     },
   });
