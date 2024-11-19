@@ -22,6 +22,7 @@ import {
 import {
   useDeleteFavoriteRecipe
 } from '../../api/recipes/favorites/useDeleteFavoriteRecipe.ts';
+import { NoMatch } from '../404/NoMatch.tsx';
 
 export const RecipePage = () => {
   const { id } = useParams<{ id: string }>();
@@ -45,7 +46,7 @@ export const RecipePage = () => {
   }
 
   if (!recipe) {
-    return <div>Рецепт не найден. Пожалуйста, вернитесь назад.</div>;
+    return <NoMatch />;
   }
 
   const handleIngredientCheck = (ingredient: string) => {
