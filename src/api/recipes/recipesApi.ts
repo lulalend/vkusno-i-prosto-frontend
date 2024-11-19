@@ -10,12 +10,12 @@ import { getConfig, URL } from '../queryParam.ts';
 export const getAllRecipes = (
   limit: number,
   offset: number,
-  // name: string,
-  // includeIngredient: string,
-  // excludeIngredient: string,
+  name: string,
+  includeIngredient: string,
+  excludeIngredient: string,
 ) =>
   axios.get<RecipesResponse>(URL, {
-    params: { limit, offset },
+    params: { limit, offset, name, includeIngredient, excludeIngredient },
   });
 
 export const getMyRecipes = () =>

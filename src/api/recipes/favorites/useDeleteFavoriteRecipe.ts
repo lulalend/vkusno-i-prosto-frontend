@@ -1,14 +1,14 @@
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { deleteFavoriteRecipe } from './favoriteRecipesApi.ts';
-import { favoriteRecipesKeys } from '../../queryParam.ts';
+import { favoritesDeleteQueryKey } from '../../queryParam.ts';
 
 export const useDeleteFavoriteRecipe = () => {
   const { mutate, isPending } = useMutation({
-    mutationKey: [favoriteRecipesKeys.delete],
+    mutationKey: favoritesDeleteQueryKey,
     mutationFn: (id: string) => deleteFavoriteRecipe(id),
     onSuccess: () => {
-      toast.success('Удалили рецепт из сохранённого :)');
+      toast.success('Удалили рецепт из сохранённого!');
     },
   });
 

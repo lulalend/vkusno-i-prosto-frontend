@@ -1,4 +1,4 @@
-const host = 'http://147.45.165.69:8080/v1';
+const host = 'http://51.250.98.4:8080/v1';
 
 export const URL: string = `${host}/recipes`;
 export const FAVORITE_URL: string = `${host}/favorites`;
@@ -14,17 +14,20 @@ export const getConfig = () => {
   };
 };
 
-export const recipeKeys = {
-  getAll: 'recipes',
-  getOne: 'recipe',
-  create: 'create recipe',
-  update: 'update recipe',
-  delete: 'delete recipe',
-  getCreated: 'created recipes',
-};
+export const recipesQueryKey = (
+  limit: number,
+  offset: number,
+  name: string,
+  includeIngredient: string,
+  excludeIngredient: string,
+) => ['recipes', { limit, offset, name, includeIngredient, excludeIngredient }];
+export const recipeCreateQueryKey = ['create recipe'];
+export const recipeDeleteQueryKey = ['delete recipe'];
+export const recipeUpdateQueryKey = ['update recipe'];
+export const recipesCreatedQueryKey = ['created recipe'];
+export const recipeByIdQueryKey = (id: string) => ['recipe', { id }];
 
-export const favoriteRecipesKeys = {
-  getAll: 'favorite recipes',
-  add: 'add favorite recipe',
-  delete: 'delete favorite recipe',
-};
+export const favoritesQueryKey = ['favorite recipes'];
+export const favoritesAddQueryKey = ['add favorite recipe'];
+export const favoritesDeleteQueryKey = ['delete favorite recipe'];
+export const isFavoritesQueryKey = (id: string) => ['favorite recipes', { id }];

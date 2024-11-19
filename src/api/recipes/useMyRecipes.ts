@@ -2,11 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { getMyRecipes } from './recipesApi.ts';
 import type { RecipesResponse } from '../../types/types.ts';
-import { recipeKeys } from '../queryParam.ts';
+import { recipesCreatedQueryKey } from '../queryParam.ts';
 
 export const useMyRecipes = () => {
   const { data, isLoading } = useQuery<RecipesResponse, AxiosError>({
-    queryKey: [recipeKeys.getCreated],
+    queryKey: recipesCreatedQueryKey,
     queryFn: () => getMyRecipes().then((response) => response.data),
   });
 
