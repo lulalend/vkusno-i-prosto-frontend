@@ -13,7 +13,7 @@ export const useCreateRecipe = () => {
     onSuccess: () => {
       toast.success('Спасибо за рецепт :)');
       queryClient.invalidateQueries({
-        queryKey: [recipeKeys.getAll, recipeKeys.getCreated],
+        queryKey: [recipeKeys.getCreated],
       });
     },
   });
