@@ -48,7 +48,7 @@ export const queryClient = new QueryClient({
   }),
   defaultOptions: {
     queries: {
-      retry: retryFunction
+      retry: retryFunction,
     },
     mutations: {
       retry: retryFunction,

@@ -16,7 +16,6 @@ const infoMessages: Record<string, string> = {
   defaultMessage: 'Что-то пошло не так... Уже чиним',
 } as const;
 
-
 export const getErrorMessage = (code: number, body?: string): string => {
   if (code in responsesMessages) {
     const message = responsesMessages[code];
