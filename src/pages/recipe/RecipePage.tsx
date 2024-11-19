@@ -10,18 +10,9 @@ import { useUpdateRecipe } from '../../api/recipes/useUpdateRecipe.ts';
 import { useDeleteRecipe } from '../../api/recipes/useDeleteRecipe.ts';
 import { useRecipeById } from '../../api/recipes/useRecipeById.ts';
 import { LoadingPage } from '../loading/LoadingPage.tsx';
-// prettier-ignore
-import {
-  useIsFavoriteRecipe
-} from '../../api/recipes/favorites/useIsFavoriteRecipe.ts';
-// prettier-ignore
-import {
-  useAddFavoriteRecipe
-} from '../../api/recipes/favorites/useAddFavoriteRecipe.ts';
-// prettier-ignore
-import {
-  useDeleteFavoriteRecipe
-} from '../../api/recipes/favorites/useDeleteFavoriteRecipe.ts';
+import { useIsFavoriteRecipe } from '../../api/recipes/favorites/useIsFavoriteRecipe.ts';
+import { useAddFavoriteRecipe } from '../../api/recipes/favorites/useAddFavoriteRecipe.ts';
+import { useDeleteFavoriteRecipe } from '../../api/recipes/favorites/useDeleteFavoriteRecipe.ts';
 import { NoMatch } from '../404/NoMatch.tsx';
 
 export const RecipePage = () => {

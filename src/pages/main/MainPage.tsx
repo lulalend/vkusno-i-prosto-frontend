@@ -7,10 +7,7 @@ import LeftArrow from '../../assets/svg/leftArrow.svg';
 import DisabledLeftArrow from '../../assets/svg/disabledLeftArrow.svg';
 import RightArrow from '../../assets/svg/rightArrow.svg';
 import DisabledRightArrow from '../../assets/svg/disabledRightArrow.svg';
-// prettier-ignore
-import {
-  RecipeContainer
-} from '../../components/recipes/container/RecipeContainer.tsx';
+import { RecipeContainer } from '../../components/recipes/container/RecipeContainer.tsx';
 import { useRecipes } from '../../api/recipes/useRecipes.ts';
 import { LoadingPage } from '../loading/LoadingPage.tsx';
 
