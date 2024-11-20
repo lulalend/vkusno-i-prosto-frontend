@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import ReactGA from 'react-ga4';
 import styles from './styles.module.css';
 import Filter from '../../assets/svg/filter.svg';
 import FocusFilter from '../../assets/svg/focusFilter.svg';
@@ -107,9 +108,21 @@ export const MainPage = () => {
           if (filterType === 'include') {
             setIncludeIngredient(value);
             localStorage.setItem('includeIngredient', value);
+
+            ReactGA.event({
+              category: 'filter',
+              action: 'include',
+              label: value,
+            });
           } else if (filterType === 'exclude') {
             setExcludeIngredient(value);
             localStorage.setItem('excludeIngredient', value);
+
+            ReactGA.event({
+              category: 'filter',
+              action: 'exclude',
+              label: value,
+            });
           }
         }
       };
@@ -119,6 +132,12 @@ export const MainPage = () => {
 
     setSearchName(value);
     localStorage.setItem('searchName', value);
+
+    ReactGA.event({
+      category: 'search',
+      action: 'search_query',
+      label: value,
+    });
   };
 
   return (
