@@ -4,4 +4,4 @@
 
 ### Работу выполнила Клюева Яна
 
-ccылка на проект: to be continued...
+ccылка на проект: https://vkusno-i-prosto-frontend.vercel.app/
