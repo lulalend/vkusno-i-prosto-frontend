@@ -1,4 +1,4 @@
-const host = '/api';
+const host = 'http://147.45.165.69:8080/v1';
 
 export const URL: string = `${host}/recipes`;
 export const FAVORITE_URL: string = `${host}/favorites`;
