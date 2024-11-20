@@ -7,19 +7,13 @@ import MyRecipes from '../../assets/svg/myRecipes.svg';
 import FocusMyRecipes from '../../assets/svg/focusMyRecipes.svg';
 import SavedRecipes from '../../assets/svg/heart.svg';
 import FocusSavedRecipes from '../../assets/svg/whiteHeart.svg';
-// prettier-ignore
-import {
-  RecipeContainer
-} from '../../components/recipes/container/RecipeContainer.tsx';
+import { RecipeContainer } from '../../components/recipes/container/RecipeContainer.tsx';
 import { RecipeForCreate } from '../../types/types.ts';
 import { useCreateRecipe } from '../../api/recipes/useCreateRecipe.ts';
 import { Modal } from '../../components/modal/Modal.tsx';
 import { RecipeForm } from '../../components/form/RecipeForm.tsx';
 import { useMyRecipes } from '../../api/recipes/useMyRecipes.ts';
-// prettier-ignore
-import {
-  useFavoriteRecipes
-} from '../../api/recipes/favorites/useFavoriteRecipes.ts';
+import { useFavoriteRecipes } from '../../api/recipes/favorites/useFavoriteRecipes.ts';
 import { LoadingPage } from '../loading/LoadingPage.tsx';
 
 export const ProfilePage = () => {

@@ -4,16 +4,10 @@ import {
   SignInResponse,
   SignUpRequest,
 } from '../../types/types.ts';
-
-const URL: string = 'http://147.45.165.69:8080/v1';
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-  },
-};
+import { TOKEN_URL, USERS_URL } from '../queryParam.ts';
 
 export const signUp = (data: SignUpRequest) =>
-  axios.post(`${URL}/users`, data, config);
+  axios.post(USERS_URL, data, { timeout: 1000 });
 
 export const signIn = (data: SignInRequest) =>
-  axios.post<SignInResponse>(`${URL}/token`, data, config);
+  axios.post<SignInResponse>(TOKEN_URL, data, { timeout: 1000 });

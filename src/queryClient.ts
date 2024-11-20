@@ -8,11 +8,36 @@ const errorFunction = (error: Error) => {
     const statusCode = error.status;
 
     if (statusCode) {
-      toast.error(getErrorMessage(statusCode));
+      let body = '';
+
+      if (statusCode === 403 || statusCode === 401) {
+        body = error.response?.data?.forbiddenType;
+
+        if (body === 'TOKEN_EXPIRED') {
+          localStorage.removeItem('token');
+        }
+      }
+      toast.error(getErrorMessage(statusCode, body));
     } else {
       toast.error(getInfoMessage('defaultMessage'));
     }
   }
+};
+
+const retryFunction = (failureCount: number, error: Error) => {
+  if (!(error instanceof AxiosError)) {
+    return false;
+  }
+
+  if (error.code === 'ECONNABORTED') {
+    return failureCount < 5;
+  }
+
+  if (error.response?.status) {
+    return false;
+  }
+
+  return failureCount < 5;
 };
 
 export const queryClient = new QueryClient({
@@ -22,7 +47,11 @@ export const queryClient = new QueryClient({
     },
   }),
   defaultOptions: {
+    queries: {
+      retry: retryFunction,
+    },
     mutations: {
+      retry: retryFunction,
       onError: (error) => {
         errorFunction(error);
       },
