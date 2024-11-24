@@ -4,4 +4,4 @@
 
 ### Работу выполнила Клюева Яна
 
-ccылка на проект: https://vkusno-i-prosto-frontend.vercel.app/
+ccылка на проект: http://147.45.106.238:4174/
