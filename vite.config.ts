@@ -12,6 +12,8 @@ export default defineConfig({
     }),
   ],
 
+  base: '/vkusno-i-prosto-frontend/',
+
   assetsInclude: ['**/*.lottie'],
 
   build: {
